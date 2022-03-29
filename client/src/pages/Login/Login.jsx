@@ -44,6 +44,7 @@ function Login() {
 
   return (
     <>
+          <div className="container">
       <section className="loginContainer">
         <h1 className="login">
           <FaSignInAlt /> Login
@@ -80,6 +81,7 @@ function Login() {
           </dov>
         </form>
       </section>
+      </div>
     </>
   );
 }

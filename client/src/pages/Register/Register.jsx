@@ -51,6 +51,7 @@ function Register() {
 
   return (
     <>
+    <div className="container">
       <section>
         <h1>
           <FaUser /> Register
@@ -105,6 +106,7 @@ function Register() {
           </dov>
         </form>
       </section>
+      </div>
     </>
   );
 }
