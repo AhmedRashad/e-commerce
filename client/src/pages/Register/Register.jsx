@@ -24,9 +24,9 @@ function Register() {
       console.log(meesage);
     }
 
-    if (isSuccess || user) {
-      navigate("/");
-    }
+    // if (isSuccess || user) {
+    //   navigate("/");
+    // }
     dispatch(reset());
   }, [user, isError, isSuccess, meesage, navigate, dispatch]);
   const onChange = (e) => {

@@ -3,10 +3,18 @@ const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 
+// Generate jwt
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
+
 // @desc Register new user
 // @route Post /api/users
 // @access public
 const registerUser = asyncHandler(async (req, res) => {
+ 
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     res.status(400);
@@ -27,20 +35,19 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password: hashedPassword,
   });
-  if (user) {
-    res.cookie("token", generateToken(user._id), {
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-    });
-    res.status(201).json({
-      name: user.name,
-      email: user.email,
-    });
-  } else {
-    res.status(400);
-    throw new Error("INvalid user data");
-  }
-});
+  const token = generateToken(user._id);
+  console.log(token);
+  res.cookie("token", token, {
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  });
+  console.log(user);
+  
+  res.status(201).json({
+    name: user.name,
+    email: user.email,
+  
+  });
+})
 
 // @desc Authenticate auser
 // @route Post /api/users/login
@@ -83,12 +90,7 @@ const logoutUser = asyncHandler(async (req, res) => {
     success: true,
   });
 });
-// Generate jwt
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
-  });
-};
+
 module.exports = {
   registerUser,
   loginUser,
