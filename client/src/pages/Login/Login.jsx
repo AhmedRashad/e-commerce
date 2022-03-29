@@ -1,8 +1,85 @@
-import React from "react";
-import "./Login.css";
+import { useState, useEffect } from "react";
+import { FaSignInAlt } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { login, reset } from "../../features/auth/authSlice";
+import "./Login.scss";
 
 function Login() {
-  return <div>Login</div>;
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = formData;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isSuccess, isLoading, isError, meesage } = useSelector(
+    (state) => state.auth
+  );
+  useEffect(() => {
+    if (isError) {
+      console.log(meesage);
+    }
+    if (isSuccess || user) {
+      navigate("/");
+    }
+    dispatch(reset());
+  }, [user, isError, isSuccess, meesage, navigate, dispatch]);
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      email,
+      password,
+    };
+    dispatch(login(userData));
+  };
+
+  return (
+    <>
+      <section>
+        <h1>
+          <FaSignInAlt /> Login
+        </h1>
+        <p>Please create an account</p>
+      </section>
+      <section>
+        <form onSubmit={onSubmit}>
+          <div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={onChange}
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              placeholder="Enter your password"
+              onChange={onChange}
+            />
+          </div>
+
+          <dov>
+            <button type="submit">Submit</button>
+          </dov>
+        </form>
+      </section>
+    </>
+  );
 }
 
 export default Login;
