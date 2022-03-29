@@ -5,6 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  background-size: "cover";
+  background-repeat: no-repeat;
+  background-image: url('/src/images/wave.svg');
 }
 
 code {

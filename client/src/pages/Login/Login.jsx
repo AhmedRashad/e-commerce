@@ -21,7 +21,7 @@ function Login() {
     if (isError) {
       console.log(meesage);
     }
-    if (isSuccess || user) {
+    if (isSuccess) {
       navigate("/");
     }
     dispatch(reset());
@@ -44,16 +44,17 @@ function Login() {
 
   return (
     <>
-      <section>
-        <h1>
+      <section className="loginContainer">
+        <h1 className="login">
           <FaSignInAlt /> Login
         </h1>
-        <p>Please create an account</p>
+        <p>Please <a href="/register">create an account</a></p>
       </section>
       <section>
         <form onSubmit={onSubmit}>
           <div>
             <input
+              className="loginInput"
               type="email"
               id="email"
               name="email"
@@ -64,6 +65,7 @@ function Login() {
           </div>
           <div>
             <input
+              className="loginInput"
               type="password"
               id="password"
               name="password"
@@ -74,7 +76,7 @@ function Login() {
           </div>
 
           <dov>
-            <button type="submit">Submit</button>
+            <button type="submit">Log in</button>
           </dov>
         </form>
       </section>
