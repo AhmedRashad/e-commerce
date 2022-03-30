@@ -1,19 +1,294 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
-  background-size: "cover";
-  background-repeat: no-repeat;
-  background-image: url('/src/images/wave.svg');
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Import google-fonts ( Montserrat for body text - Oswald for heading */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;700&display=swap');
+
+
+/* ***************** */
+/* Gloabal variables */
+/* ***************** */
+
+
+/* [mobile first design] add all propties here for mobile view*/
+
+:root{
+  /* font families */
+  --ff-headers:'Oswald', sans-serif;
+  --ff-body: 'Montserrat', sans-serif;
+
+  /* font sizes */
+  --fs-small: 0.875rem;
+  --fs-normal:1rem;
+  --fs-large:1.125rem;
+  --fs-vlarge:3.5rem;
+  --fs-gaint:6.25rem;
+
+  /* font-weight */
+  --fw-normal:400;
+  --fw-bold:700;
+
+  /* Colors */
+  --primary-color :256 78% 53%;
+  --secondary-color:170, 51%, 49%;
+  --accent-color:170, 51%, 49%;
+  --white-color:0, 0%, 100%;
+  --dark-color:268, 21%, 12%;
+
+  /* main spacing */
+  --padding-main:1rem;
+  --margin-main:1rem;
+  --radius-main:0.5rem ;
+  --radius-circle:50%;
+
+  --border-size:1px;
+}
+
+
+/* [tablet] all proprties for tablets goes here*/
+
+@media (min-width :48em){
+  :root{
+
+  }
+
+}
+
+/* [desktop] all proprties for tablets goes here*/
+
+@media (min-width:62em){
+:root{
+  --fs-small:1rem;
+  --fs-normal:1.25rem;
+  --fs-large:2rem;
+  --fs-vlarge:4.25rem;
+  --fs-gaint:6.25rem;
+
+}
+}
+
+/* ***************** */
+/*   Gloabal reset   */
+/* ***************** */
+
+*,
+*::after,
+*::before{
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+picture{
+  margin: 0;
+}
+
+body{
+  font-family: var(--ff-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  color:hsl(var(--dark-color));
+}
+
+h1,h2,h3,h4,h5,h6{
+  text-transform: uppercase;
+  font-family: var(--ff-headers);
+  font-weight: var(--fw-bold);
+}
+
+img,picture{
+  display: block;
+  width: 100%;
+}
+
+form,
+form button,
+form input,
+form label,
+form textarea{
+  font: inherit;
+}
+
+a,
+a:visited,
+a:hover,
+a:focus{
+  text-decoration: none;
+  font:inherit
+}
+
+
+/* ***************** */
+/*   utilty classes  */
+/* ***************** */
+
+.flex{
+  display: flex;
+  /* use custom proprty --gap to change the gap for value other than 1rem 
+    Ex/ <div class="flex" style="--gap:2rem">
+  */
+  gap: var(--gap,1rem);
+}
+
+.flow > *+*{
+  margin-top: var(--margin-main);
+} 
+
+/* this class for centering text on component  */
+/* IMPORTANT NOTE : this class uses grid display */
+.center-text{
+  display: grid;
+  place-items: center;
+}
+
+
+/* 
+ this class for accessabilty reasons hide elment visually but leave it for screen readers
+ form	@author Gaël Poupard
+*/
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important; 
+	-webkit-clip-path: inset(50%) !important;
+		clip-path: inset(50%) !important;
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
+
+/*  to manage backgroواللهd-color: hsl(var(--primary-color));}*/
+
+.bg-dark{background-color: hsl(var(--dark-color));}
+.bg-primary{background-color: hsl(var(--primary-color));}
+.bg-accent{background-color: hsl(var(--accent-color));}
+
+/*  to manage text colors */
+.text-dark{color: hsl(var(--dark-color));}
+.text-primary{color: hsl(var(--primary-color));}
+.text-accent{color: hsl(var(--accent-color));}
+.text-white{color: hsl(var(--white-color));}
+
+
+.text-center{
+  text-align: center;
+}
+
+.container{
+  max-width: 60rem;
+  padding: var(--padding-main); /*custom proprity  same as above*/
+  margin-inline: auto;  /*modern css3 feature canIUse 88%*/
+}
+
+/* ******************** */
+/*   component classes  */
+/* ******************** */
+
+/* buttons */
+.btn{
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: var(--padding-main) calc(var(--padding-main) * 2);
+  border-radius: var(--radius-main);
+  font-size: var(--fs-normal); 
+  font-weight: var(--fw-bold);
+  color: hsl(var(--white-color));
+  z-index: 1;
+}
+
+
+.btn::after{
+  content: "";
+  position: absolute;
+  background-color: inherit;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-main);
+  z-index: -1;
+  opacity: 0;
+  transition: transform 300ms ease-in-out, opacity 450ms linear ;
+}
+
+.btn:focus::after,
+.btn:hover::after{
+  transform: scale(1.25);
+  opacity: 0.25;
+}
+
+
+.btn-primary{
+  border: none;
+  background-color: hsl(var(--primary-color));
+}
+.btn-accent{
+  border: none;
+  background-color: hsl(var(--accent-color));
+}
+.btn-dark{
+  border: none;
+  background-color: hsl(var(--dark-color));
+}
+
+.btn-i-primary{
+  border:solid var(--border-size) hsl(var(--primary-color)) ;
+  background-color: transparent;
+  color: hsl(var(--primary-color));
+  transition: background-color 300ms ease-in-out, color 450ms linear ;
+
+}
+
+.btn-i-primary:focus,
+.btn-i-primary:hover{
+  background-color: hsl(var(--primary-color));
+  color: hsl(var(--white-color));
+}
+
+.btn-i-accent{
+  border:solid var(--border-size) hsl(var(--accent-color)) ;
+  background-color: transparent;
+  color: hsl(var(--accent-color));
+  transition: background-color 300ms ease-in-out, color 450ms linear ;
+
+}
+
+.btn-i-accent:focus,
+.btn-i-accent:hover{
+  background-color: hsl(var(--accent-color));
+  color: hsl(var(--white-color));
+}
+
+.btn-i-dark{
+  border:solid var(--border-size) hsl(var(--primary-dark)) ;
+  background-color: transparent;
+  color: hsl(var(--dark-color));
+  transition: background-color 300ms ease-in-out, color 450ms linear ;
+
+}
+
+.btn-i-dark:focus,
+.btn-i-dark:hover{
+  background-color: hsl(var(--dark-color));
+  color: hsl(var(--white-color));
 }
