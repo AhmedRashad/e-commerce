@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { FaSignInAlt } from "react-icons/fa";
+// import { FaSignInAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
+import google_logo from '../../Images/Google Logo.svg';
+import logo from '../../Images/eCommerce Logo.svg';
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../../features/auth/authSlice";
 import "./Login.scss";
@@ -14,18 +16,18 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { user, isSuccess, isLoading, isError, meesage } = useSelector(
+  const { user, isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.auth
   );
   useEffect(() => {
     if (isError) {
-      console.log(meesage);
+      console.log(message);
     }
     if (isSuccess) {
       navigate("/");
     }
     dispatch(reset());
-  }, [user, isError, isSuccess, meesage, navigate, dispatch]);
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -44,43 +46,43 @@ function Login() {
 
   return (
     <>
-          <div className="container">
-      <section className="loginContainer">
-        <h1 className="login">
-          <FaSignInAlt /> Login
-        </h1>
-        <p>Please <a href="/register">create an account</a></p>
-      </section>
-      <section>
-        <form onSubmit={onSubmit}>
-          <div>
-            <input
-              className="loginInput"
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={onChange}
-            />
-          </div>
-          <div>
-            <input
-              className="loginInput"
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter your password"
-              onChange={onChange}
-            />
-          </div>
-
-          <dov>
-            <button type="submit">Log in</button>
-          </dov>
-        </form>
-      </section>
+      <div className="container">
+        <nav className="navbar">
+          <img src={logo} alt="Matger Logo" />
+          <button>Home</button>
+        </nav>
+        <div className="card">
+          <form onSubmit={onSubmit}>
+              <button className="quick-sign"><img src={google_logo} alt="Google logo" />Sign in with Google</button>
+              <span className="divider">OR</span>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="Email"
+                onChange={onChange}
+              />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                onChange={onChange}
+              />
+              <div className="input-group">
+                <input type="checkbox" name="remember" id="remember" />
+                <label htmlFor="remember">Remember me</label>
+                <a href="/reset-password">Forget your Password?</a> {/* We Need to create the reset password page */}
+              </div>
+            <div className="btn-group">
+              <button type="submit">Log in</button>
+              <button>Register</button>
+            </div>
+          </form>
+        </div>
+        <footer>Copyright received - 2022</footer>
       </div>
     </>
   );

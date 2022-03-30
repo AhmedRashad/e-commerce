@@ -1,29 +1,178 @@
-// Main rules:
-
+$primary: #4e24e1;
+$secondary: #808080;
+$white: #fff;
 .container {
-    background-color: grey;
-    max-width: 50vw;
-    margin-left: 25%;
-}
+    width: 100vw;
+    height: 100vh;
+    padding: 1.5rem;
+    .navbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        img {
+            width: 100px;
+        }
+        button {
+            border: none;
+            background-color: $primary;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 0.3rem;
+            color: $white;
+        } 
+    }
+    .card {
+        width: 100%;
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        form {
+            width: 30vw;
+            min-height: 50vh;
+            background-color: $white;
+            border: 1px solid $primary;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            .quick-sign {
+                border: none;
+                background-color: $primary;
+                padding: 1rem 0.5rem;
+                border-radius: 0.3rem;
+                color: $white;
+                display: flex;
+                font-size: 1.2rem;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                margin-bottom: 0.5rem;
+                img {
+                    background-color: $white;
+                    padding: 0.25rem;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: 5%;
+                }
+            }
+            .divider {
+                width: 100%;
+                color: $secondary;
+                text-align: center;
+                position: relative;
+                margin-bottom: 0.5rem;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 45%;
+                    height: 1px;
+                    background-color: $secondary;
+                    top: 50%;
+                    left: 0;
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 45%;
+                    height: 1px;
+                    background-color: $secondary;
+                    top: 50%;
+                    right: 0;
+                }
+            }
+            input[type="email"] {
+                padding: 0.75rem;
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+                border-radius: 0.3rem;
+                border: 1px solid $secondary;
+                color: $secondary;
+                &:focus-visible {
+                    outline: none;
+                    border: 1px solid $primary;
+                }
+            }
+            input[type="password"] {
+                padding: 0.75rem;
+                font-size: 1.2rem;
+                margin-bottom: 0.3rem;
+                border-radius: 0.3rem;
+                border: 1px solid $secondary;
+                color: $secondary;
+                &:focus-visible {
+                    outline: none;
+                    border: 1px solid $primary;
+                }
+            }
+            .input-group {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 0.5rem;
+                input[type="checkbox"] {
+                    margin-right: 5px;
+                }
+                a {
+                    margin-left: auto;
+                    color: $primary;
+                }
+            }
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                button {
+                    cursor: pointer;
+                    border: none;
+                    background-color: $primary;
+                    padding: 0.75rem 0.5rem;
+                    border-radius: 0.3rem;
+                    color: $white;
+                    display: flex;
+                    font-size: 1.2rem;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    margin-bottom: 0.5rem;
+                    &:last-child {
+                        background-color: #eee;
+                        color: $secondary;
+                        margin-bottom: 0rem;
+                    }
+                }
 
-//typography rules:
-p {
-    font-size: 20px;
+            }
+        }
+    }
+    footer {
+        position: absolute;
+        left: 50%;
+        bottom: 2%;
+        color: $white;
+        transform: translateX(-50%);
+    }
 }
-
-.login {
-    gap: 5px;
-    align-self: center;
-    align-items: center;
-    display: inline-flex;
+@media (max-width: 1000px) {
+    form {
+        width: 60vw !important;
+        min-height: 50vh!important;
+        .input-group {
+            font-size: 0.8rem!important;
+        }
+    }
 }
-
-.loginInput {
-    margin-left: 10%;
-    margin-bottom: 5px;
-}
-
-button {
-    margin-left: 10%;
-    width: 80%;
+@media (max-width: 425px) {
+    form {
+        width: 90vw !important;
+        min-height: 50vh!important;
+        .input-group {
+            font-size: 0.8rem!important;
+        }
+    }
+    footer {
+        font-size: 0.8rem;
+    }
 }
