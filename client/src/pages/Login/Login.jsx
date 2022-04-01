@@ -49,9 +49,7 @@ function Login() {
       <div className="container">
         <nav className="navbar">
           <img src={logo} alt="Matger Logo" />
-          <div className="btn_home">
-            <Link to="/">Home</Link>
-          </div>
+            <Link className="btn_home" to="/">Home</Link>
         </nav>
         <div className="card">
           <form onSubmit={onSubmit}>
@@ -80,11 +78,10 @@ function Login() {
               <input type="checkbox" name="remember" id="remember" />
               <label htmlFor="remember">Remember me</label>
               <a href="/reset-password">Forget your Password?</a>
-              {/* We Need to create the reset password page */}
+              {/* Now just code it the reset password page */}
             </div>
             <div className="btn-group">
               <button type="submit">Log in</button>
-
               <Link to="/register">Register</Link>
             </div>
           </form>

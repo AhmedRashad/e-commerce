@@ -13,7 +13,6 @@ $white: #fff;
             width: 100px;
         }
         .btn_home {
-            border: none;
             background-color: $primary;
             padding: 0.5rem 1.5rem;
             font-size: 1rem;
@@ -30,8 +29,7 @@ $white: #fff;
         justify-content: center;
         align-items: center;
         form {
-            width: 30vw;
-            min-height: 50vh;
+            width: 400px;
             background-color: $white;
             border: 1px solid $primary;
             border-radius: 0.5rem;
@@ -41,11 +39,11 @@ $white: #fff;
             .quick-sign {
                 border: none;
                 background-color: $primary;
-                padding: 1rem 0.5rem;
+                padding: 0.75rem 0.5rem;
                 border-radius: 0.3rem;
                 color: $white;
                 display: flex;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 align-items: center;
                 justify-content: center;
                 position: relative;
@@ -85,8 +83,8 @@ $white: #fff;
                 }
             }
             input[type="email"] {
-                padding: 0.75rem;
-                font-size: 1.2rem;
+                padding: 0.5rem 0.75rem;
+                font-size: 1rem;
                 margin-bottom: 0.5rem;
                 border-radius: 0.3rem;
                 border: 1px solid $secondary;
@@ -97,8 +95,8 @@ $white: #fff;
                 }
             }
             input[type="password"] {
-                padding: 0.75rem;
-                font-size: 1.2rem;
+                padding: 0.5rem 0.75rem;
+                font-size: 1rem;
                 margin-bottom: 0.3rem;
                 border-radius: 0.3rem;
                 border: 1px solid $secondary;
@@ -112,6 +110,7 @@ $white: #fff;
                 display: flex;
                 align-items: center;
                 width: 100%;
+                font-size: 1rem;
                 margin-bottom: 0.5rem;
                 input[type="checkbox"] {
                     margin-right: 5px;
@@ -129,27 +128,31 @@ $white: #fff;
                     cursor: pointer;
                     border: none;
                     background-color: $primary;
-                    padding: 0.75rem 0.5rem;
+                    padding: 0.5rem 0.5rem;
                     border-radius: 0.3rem;
                     color: $white;
                     display: flex;
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                     align-items: center;
                     justify-content: center;
-                    position: relative;
                     margin-bottom: 0.5rem;
-                    &:last-child {
-                        display: block;
-                        background-color: #eee;
-                        color: $secondary;
-                        margin-bottom: 0rem;
-                    }
                 }
-
+                a {
+                    background-color: #eee;
+                    padding: 0.5rem 0.5rem;
+                    border-radius: 0.3rem;
+                    color: $secondary;
+                    display: flex;
+                    font-size: 1rem;
+                    align-items: center;
+                    justify-content: center;
+                }
             }
         }
     }
     footer {
+        width: 100%;
+        text-align: center;
         position: absolute;
         left: 50%;
         bottom: 2%;
@@ -157,24 +160,27 @@ $white: #fff;
         transform: translateX(-50%);
     }
 }
-@media (max-width: 1000px) {
-    form {
-        width: 60vw !important;
-        min-height: 50vh!important;
-        .input-group {
-            font-size: 0.8rem!important;
-        }
-    }
-}
 @media (max-width: 425px) {
     form {
-        width: 90vw !important;
-        min-height: 50vh!important;
-        .input-group {
-            font-size: 0.8rem!important;
+        width: 300px !important;
+        .quick-sign {
+            padding: 0.75rem 0.5rem !important;
+            font-size: 1rem !important;
         }
-    }
-    footer {
-        font-size: 0.8rem;
+        .divider {
+            &::after {
+                width: 40% !important;
+            }
+            &::before {
+                width: 40% !important;
+            }
+        }
+        .input-group {
+            // font-size: 0.8rem!important;
+            flex-wrap: wrap;
+            a {
+                margin: 0 auto;
+            }
+        }
     }
 }
