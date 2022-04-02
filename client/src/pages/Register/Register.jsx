@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa"; // it's NOT used 
 import { register, reset } from "../../features/auth/authSlice";
+import Login from "../Login/Login";
 import "./Register.scss";
 
 function Register() {
@@ -51,62 +53,52 @@ function Register() {
 
   return (
     <>
-    <div className="container">
-      <section>
-        <h1>
-          <FaUser /> Register
-        </h1>
-        <p>Please create an account</p>
-      </section>
-      <section>
-        <form onSubmit={onSubmit}>
-          <div>
-            {" "}
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={name}
-              placeholder="Enter your name"
-              onChange={onChange}
-            />
-          </div>
-          <div>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Enter your email"
-              onChange={onChange}
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Enter your password"
-              onChange={onChange}
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              id="password2"
-              name="password2"
-              value={password2}
-              placeholder="Confirm your password"
-              onChange={onChange}
-            />
-          </div>
-          <dov>
-            <button type="submit">Submit</button>
-          </dov>
-        </form>
-      </section>
-      </div>
+    <div className="holder bg-grey-lighter min-h-screen flex flex-col">
+            <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                  <form className="bg-white px-6 py-8 rounded shadow-md text-black w-full" action="">
+
+                    <h1 className="mb-8 text-3xl text-center">Sign up</h1>
+                    <input 
+                        type="text"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
+                        name="fullname"
+                        placeholder="Full Name" />
+
+                    <input 
+                        type="text"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
+                        name="email"
+                        placeholder="Email" />
+
+                    <input 
+                        type="password"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
+                        name="password"
+                        placeholder="Password" />
+                    <input 
+                        type="password"
+                        className="block border border-grey-light w-full p-3 rounded mb-4"
+                        name="confirm_password"
+                        placeholder="Confirm Password" />
+
+                    <button
+                        type="submit"
+                        className="w-full text-center py-3 rounded bg-color text-white my-1"
+                    >Create Account</button>
+
+                    <div className="text-center text-sm text-grey-dark mt-4">
+                        By signing up, you agree to the 
+                        <Link to="#" className="no-underline border-b border-grey-dark text-grey-dark">Terms of Service</Link>
+                        and 
+                        <Link to="#" className="no-underline border-b border-grey-dark text-grey-dark">Privacy Policy</Link>
+                    </div>
+                  </form>
+                <div className="text-white mt-6 mr-2">
+                    Already have an account? 
+                    <Link to={Login} className="no-underline border-b border-blue text-blue ml-4">Log in</Link>
+                </div>
+            </div>
+        </div>
     </>
   );
 }

@@ -1,1 +1,13 @@
-$peimary: #4e24e1;
+$primary: #4e24e1;
+.holder {
+    background-image: url('../../Images/wave.svg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-color {
+    background-color: $primary !important;
+}
+input:focus-visible {
+    outline: $primary auto 1px;
+}
