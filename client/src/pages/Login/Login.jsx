@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import google_logo from "../../Images/Google Logo.svg";
-import logo from "../../Images/eCommerce Logo.svg";
+import google_logo from "../../images/Google Logo.svg";
+import logo from "../../images/eCommerce Logo.svg";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../../features/auth/authSlice";
 import "./Login.scss";
