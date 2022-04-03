@@ -1,4 +1,3 @@
-// https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg
 
 import { Link } from "react-router-dom";
 
