@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
 import { LockClosedIcon } from "@heroicons/react/solid";
+import { FcGoogle } from "react-icons/fc";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -131,6 +132,12 @@ function Login() {
                   />
                 </span>
                 Sign in
+              </button>
+            </div>
+            <div>
+              <button className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <FcGoogle className="mr-4 " />
+                Sign in whit Google
               </button>
             </div>
           </form>
