@@ -75,7 +75,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @access private
 const getMe = asyncHandler(async (req, res) => {
   const { name, email } = req.user;
-  res.status(200).json(req.user);
+  res.status(200).json({ name, email });
 });
 
 // @desc Logout user
@@ -91,9 +91,24 @@ const logoutUser = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc make user admin
+// @route Put /api/users/:id/admin
+// @access private
+const makeAdmin = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.email);
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+  user.admin = true;
+  await user.save();
+  res.status(200).json(user);
+});
+
 module.exports = {
   registerUser,
   loginUser,
   getMe,
   logoutUser,
+  makeAdmin,
 };

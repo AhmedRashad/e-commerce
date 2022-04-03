@@ -22,9 +22,16 @@ const logout = async () => {
   return response.data;
 };
 
+// get user
+const getUser = async () => {
+  const response = await axios.get(API_URL + "me");
+  return response.data;
+}
+
 const authService = {
   register,
   login,
   logout,
+  getUser,
 };
 export default authService;
