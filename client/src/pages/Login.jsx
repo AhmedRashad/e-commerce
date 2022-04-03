@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
-import { LockClosedIcon } from "@heroicons/react/solid";
-import { FcGoogle } from "react-icons/fc";
+import { LockClosedIcon } from "@heroicons/react/solid"; // it's NOT used
+import { GrGoogle } from "react-icons/gr";
+import ecommerceLogo from "../Images/eCommerce Logo.svg"
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -48,21 +49,30 @@ function Login() {
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-            <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-              alt="Workflow"
-            />
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <Link to="/">
+              <img
+                className="mx-auto h-12 w-auto"
+                src={ecommerceLogo}
+                alt="Matger Logo"
+              />
+            </Link>
+            <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
               Sign in to your account
             </h2>
           </div>
           <form onSubmit={onSubmit} className="mt-8 space-y-6">
+            <div>
+                <button className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <GrGoogle className="mr-4" />
+                  Sign in with google
+                </button>
+              </div>
+            <div className="flex justify-center text-zinc-500 items-center relative after:content-[''] after:w-1/3 after:absolute after:right-0 after:bg-zinc-400 after:h-px before:content-[''] before:w-1/4 before:absolute before:left-0 before:bg-zinc-400 before:h-px">Or continue with</div>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
+                <label htmlFor="email" className="block text-zinc-600 text-sm font-bold mb-2">
+                  Email
                 </label>
                 <input
                   id="email"
@@ -71,13 +81,12 @@ function Login() {
                   value={email}
                   autoComplete="email"
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
+                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-4"
                   onChange={onChange}
                 />
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">
+                <label htmlFor="password" className="block text-zinc-600 text-sm font-bold mb-2">
                   Password
                 </label>
                 <input
@@ -87,13 +96,11 @@ function Login() {
                   value={password}
                   autoComplete="current-password"
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
+                  className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   onChange={onChange}
                 />
               </div>
             </div>
-
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
@@ -109,35 +116,16 @@ function Login() {
                   Remember me
                 </label>
               </div>
-
               <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </a>
+                <Link to="#" className="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</Link>
               </div>
             </div>
-
             <div>
               <button
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <LockClosedIcon
-                    className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                    aria-hidden="true"
-                  />
-                </span>
                 Sign in
-              </button>
-            </div>
-            <div>
-              <button className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <FcGoogle className="mr-4 " />
-                Sign in with Google
               </button>
             </div>
           </form>
