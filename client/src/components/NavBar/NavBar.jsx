@@ -141,13 +141,12 @@ export default function NavBar() {
   const { user } = useSelector((state) => state.auth);
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(reset());
     navigate("/login");
   };
 
   useEffect(() => {
     dispatch(getUser());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="bg-white">

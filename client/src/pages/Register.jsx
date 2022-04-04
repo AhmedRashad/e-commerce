@@ -55,7 +55,7 @@ function Register() {
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
-          <Link to="/">
+            <Link to="/">
               <img
                 className="mx-auto h-12 w-auto"
                 src={ecommerceLogo}
@@ -83,14 +83,21 @@ function Register() {
                 Sign up with google
               </button>
             </div>
-            <div className="flex justify-center text-zinc-500 items-center relative after:content-[''] after:w-1/3 after:absolute after:right-0 after:bg-zinc-400 after:h-px before:content-[''] before:w-1/4 before:absolute before:left-0 before:bg-zinc-400 before:h-px mt-1">Or continue with</div>
+            <div className="flex justify-center text-zinc-500 items-center relative after:content-[''] after:w-1/3 after:absolute after:right-0 after:bg-zinc-400 after:h-px before:content-[''] before:w-1/4 before:absolute before:left-0 before:bg-zinc-400 before:h-px mt-1">
+              Or continue with
+            </div>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="fullname" className="block text-zinc-500 text-sm font-bold mb-2">Fullname</label>
+                <label
+                  htmlFor="fullname"
+                  className="block text-zinc-500 text-sm font-bold mb-2"
+                >
+                  Fullname
+                </label>
                 <input
-                  id="fullname"
-                  name="fullname"
+                  id="name"
+                  name="name"
                   type="text"
                   value={name}
                   autoComplete="name"
@@ -100,7 +107,12 @@ function Register() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block mt-4 text-zinc-500 text-sm font-bold mb-2">Email</label>
+                <label
+                  htmlFor="email"
+                  className="block mt-4 text-zinc-500 text-sm font-bold mb-2"
+                >
+                  Email
+                </label>
                 <input
                   id="email"
                   name="email"
@@ -113,7 +125,12 @@ function Register() {
                 />
               </div>
               <div>
-                <label htmlFor="password" className="block mt-4 text-zinc-500 text-sm font-bold mb-2">Password</label>
+                <label
+                  htmlFor="password"
+                  className="block mt-4 text-zinc-500 text-sm font-bold mb-2"
+                >
+                  Password
+                </label>
                 <input
                   id="password"
                   name="password"
@@ -126,7 +143,12 @@ function Register() {
                 />
               </div>
               <div>
-                <label htmlFor="password2" className="block mt-4 text-zinc-500 text-sm font-bold mb-2">Confirm Password</label>
+                <label
+                  htmlFor="password2"
+                  className="block mt-4 text-zinc-500 text-sm font-bold mb-2"
+                >
+                  Confirm Password
+                </label>
                 <input
                   id="password2"
                   name="password2"
@@ -149,14 +171,26 @@ function Register() {
                 <label
                   htmlFor="terms"
                   className="ml-2 block text-sm text-gray-900 underline decoration-1"
-                >Accept <Link to="#" className="text-indigo-600">Terms</Link> and <Link to="#" className="text-indigo-600">Policy</Link>.</label>
+                >
+                  Accept{" "}
+                  <Link to="#" className="text-indigo-600">
+                    Terms
+                  </Link>{" "}
+                  and{" "}
+                  <Link to="#" className="text-indigo-600">
+                    Policy
+                  </Link>
+                  .
+                </label>
               </div>
             </div>
             <div>
               <button
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >Sign Up</button>
+              >
+                Sign Up
+              </button>
             </div>
           </form>
         </div>
