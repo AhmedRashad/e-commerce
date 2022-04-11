@@ -4,7 +4,6 @@ const User = require("../models/userModel");
 
 const protect = asyncHandler(async (req, res, next) => {
   const token = req.cookies.token;
-
   if (token) {
     try {
       // verify token

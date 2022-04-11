@@ -14,7 +14,7 @@ export const getProducts = createAsyncThunk(
 
   async (thunkAPI) => {
     try {
-      return await productService.getProducts();
+      return await productService.getAllProducts();
     } catch (error) {
       const meesage =
         (error.response &&

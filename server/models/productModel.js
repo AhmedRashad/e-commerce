@@ -19,10 +19,12 @@ const productSchema = new mongooose.Schema({
     required: [true, "Pleace add a richdescription"],
   },
   image: {
-    type: Array,
-    required: [true, "Pleace add a image"],
-    minlength: [4, "Pleace add a image"],
-    maxlength: [4, "Pleace add a image"],
+    type: [
+      {
+        type: String,
+        required: [true, "Pleace add a image"],
+      },
+    ],
   },
   category: {
     type: mongooose.Schema.Types.ObjectId,

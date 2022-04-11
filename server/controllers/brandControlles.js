@@ -9,11 +9,7 @@ const User = require("../models/userModel");
 // @access Public
 const getBrands = asyncHandler(async (req, res) => {
   const brands = await Brand.find();
-  res.status(200).json({
-    success: true,
-    count: brands.length,
-    data: brands,
-  });
+  res.status(200).json(brands);
 });
 
 // @desc add brand
@@ -21,16 +17,16 @@ const getBrands = asyncHandler(async (req, res) => {
 // @access Private
 const addBrand = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id).select("-password");
-  const category = await Category.findById(req.body.category);
-  const brand = await Brand.create({
+  //parse the path to get the file name
+  console.log(req.files);
+  const { path } = req.files[0];
+  const fileName = path.replaceAll("\\", "/").slice(6);
+  const newBrand = await Brand.create({
     ...req.body,
+    image: fileName,
     user: user._id,
-    category: category._id,
   });
-  res.status(201).json({
-    success: true,
-    data: brand,
-  });
+  res.status(201).json(newBrand);
 });
 
 // @desc update brand
@@ -41,10 +37,7 @@ const updateBrand = asyncHandler(async (req, res) => {
     new: true,
     runValidators: true,
   });
-  res.status(200).json({
-    success: true,
-    data: brand,
-  });
+  res.status(200).json(brand);
 });
 
 // @desc delete brand

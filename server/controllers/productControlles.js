@@ -2,123 +2,121 @@ const asyncHandler = require("express-async-handler");
 const Product = require("../models/productModel");
 const Category = require("../models/categoryModel");
 const Brand = require("../models/brandModel");
+const User = require("../models/userModel");
 
 // @desc    Get all products
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.aggregate();
-  res.status(200).json({
-    success: true,
-    count: products.length,
-    data: products,
-  });
+  const products = await Product.find();
+
+  res.status(200).json(products);
 });
 
 // @desc    Get aggregate products
 // @route   GET /api/products/aggregate
 // @access  Public
-const getAggregateProducts = asyncHandler(async (req, res) => {
-  const products = await Product.aggregate([
-    {
-      $lookup: {
-        from: "categories",
-        localField: "category",
-        foreignField: "_id",
-        as: "category",
-      },
-    },
-    {
-      $lookup: {
-        from: "brands",
-        localField: "brand",
-        foreignField: "_id",
-        as: "brand",
-      },
-    },
-    {
-      $unwind: {
-        path: "$category",
-        preserveNullAndEmptyArrays: true,
-      },
-    },
-    {
-      $unwind: {
-        path: "$brand",
-        preserveNullAndEmptyArrays: true,
-      },
-    },
+// const getAggregateProducts = asyncHandler(async (req, res) => {
+//   const products = await Product.aggregate([
+//     {
+//       $lookup: {
+//         from: "categories",
+//         localField: "category",
+//         foreignField: "_id",
+//         as: "category",
+//       },
+//     },
+//     {
+//       $lookup: {
+//         from: "brands",
+//         localField: "brand",
+//         foreignField: "_id",
+//         as: "brand",
+//       },
+//     },
+//     {
+//       $unwind: {
+//         path: "$category",
+//         preserveNullAndEmptyArrays: true,
+//       },
+//     },
+//     {
+//       $unwind: {
+//         path: "$brand",
+//         preserveNullAndEmptyArrays: true,
+//       },
+//     },
 
-    {
-      $project: {
-        name: 1,
-        price: 1,
-        description: 1,
-        richdescription: 1,
-        image: 1,
-        category: {
-          name: "$category.name",
-        },
-        brand: {
-          name: "$brand.name",
-        },
-      },
-    },
+//     {
+//       $project: {
+//         name: 1,
+//         price: 1,
+//         description: 1,
+//         richdescription: 1,
+//         image: 1,
+//         category: {
+//           name: "$category.name",
+//         },
+//         brand: {
+//           name: "$brand.name",
+//         },
+//       },
+//     },
 
-    {
-      $sort: {
-        name: 1,
-      },
-    },
+//     {
+//       $sort: {
+//         name: 1,
+//       },
+//     },
 
-    {
-      $skip: parseInt(req.query.skip),
-    },
-    {
-      $limit: parseInt(req.query.limit),
-    },
+//     {
+//       $skip: parseInt(req.query.skip),
+//     },
+//     {
+//       $limit: parseInt(req.query.limit),
+//     },
 
-    {
-      $group: {
-        _id: null,
-        count: { $sum: 1 },
-        data: { $push: "$$ROOT" },
-      },
-    },
+//     {
+//       $group: {
+//         _id: null,
+//         count: { $sum: 1 },
+//         data: { $push: "$$ROOT" },
+//       },
+//     },
 
-    {
-      $unwind: {
-        path: "$data",
-        preserveNullAndEmptyArrays: true,
-      },
-    },
+//     {
+//       $unwind: {
+//         path: "$data",
+//         preserveNullAndEmptyArrays: true,
+//       },
+//     },
 
-    {
-      $project: {
-        _id: 0,
-        count: 1,
-        data: {
-          name: 1,
-          price: 1,
-          description: 1,
-          richdescription: 1,
-          image: 1,
-          category: {
-            name: "$data.category.name",
-          },
-          brand: {
-            name: "$data.brand.name",
-          },
-        },
-      },
-    },
-  ]);
-  res.status(200).json({
-    success: true,
-    count: products.length,
-    data: products,
-  });
-});
+//     {
+//       $project: {
+//         _id: 0,
+//         count: 1,
+//         data: {
+//           name: 1,
+//           price: 1,
+//           description: 1,
+//           richdescription: 1,
+//           image: 1,
+//           category: {
+//             name: "$data.category.name",
+//           },
+//           brand: {
+//             name: "$data.brand.name",
+//           },
+//         },
+//       },
+//     },
+//   ]);
+//   res.status(200).json({
+//     success: true,
+//     count: products.length,
+//     data: products,
+//   });
+// });
 
 // @desc    Get single product
 // @route   GET /api/products/:id
@@ -131,10 +129,7 @@ const getProduct = asyncHandler(async (req, res) => {
       error: `Product not found with id ${req.params.id}`,
     });
   }
-  res.status(200).json({
-    success: true,
-    data: product,
-  });
+  res.status(200).json(product);
 });
 
 // @desc    Add product
@@ -144,16 +139,17 @@ const addProduct = asyncHandler(async (req, res) => {
   const categories = await Category.findById(req.body.category);
   const user = await User.findById(req.user.id).select("-password");
   const prand = await Brand.findById(req.body.brand);
+  //parse the path to get the file name
+  const path = req.files.map((file) => file.path);
+  const filename = path.map((file) => file.replaceAll("\\", "/").slice(6));
   const product = await Product.create({
     ...req.body,
-    user: user._id,
-    category: categories._id,
-    brand: prand._id,
+    image: filename,
+    category: categories,
+    brand: prand,
+    user: user,
   });
-  res.status(201).json({
-    success: true,
-    data: product,
-  });
+  res.status(201).json(product);
 });
 
 // @desc    Update product
@@ -164,10 +160,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     new: true,
     runValidators: true,
   });
-  res.status(200).json({
-    success: true,
-    data: product,
-  });
+  res.status(200).json(product);
 });
 
 // @desc    Delete product

@@ -13,11 +13,6 @@ const brandSchema = new mongoose.Schema({
     type: String,
     required: [true, "Pleace add a image"],
   },
-  category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
-    required: [true, "Pleace add a category"],
-  },
 });
 
 module.exports = mongoose.model("Brand", brandSchema);

@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = "/api/products/";
+const API_URL = "/api/products";
 
 // get products
-const getProducts = async () => {
-  const response = await axios.get(API_URL);
+const getAllProducts = async () => {
+  const response = await axios.get("http://localhost:5000/api/products");
   return response.data;
 };
 
@@ -33,7 +33,7 @@ const deleteProduct = async (id) => {
 };
 
 const productService = {
-  getProducts,
+  getAllProducts,
   getProduct,
   addProduct,
   updateProduct,

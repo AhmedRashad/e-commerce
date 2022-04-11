@@ -10,6 +10,7 @@ const getBrands = async () => {
 
 // add brand
 const addBrand = async (brandData) => {
+  console.log(brandData);
   const response = await axios.post(API_URL, brandData);
   return response.data;
 };

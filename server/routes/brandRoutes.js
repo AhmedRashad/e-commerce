@@ -10,10 +10,11 @@ const {
 
 const { protect } = require("../middleware/authMiddleware");
 const { protectAdmin } = require("../middleware/adminMiddleware");
+const { uploadHelper } = require("../middleware/uploadMiddleware");
 
 router.get("/", getBrands);
-router.post("/", protect, protectAdmin, addBrand);
-router.put("/:id", protect, protectAdmin, updateBrand);
+router.post("/", protect, protectAdmin, uploadHelper, addBrand);
+router.put("/:id", protect, protectAdmin, uploadHelper, updateBrand);
 router.delete("/:id", protect, protectAdmin, deleteBrand);
 
 module.exports = router;

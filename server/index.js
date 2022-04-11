@@ -5,7 +5,12 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 const cors = require("cors");
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
 
 require("colors");
 const conectarDB = require("./config/db");
@@ -33,8 +38,7 @@ app.use("/api/products", productRouter);
 app.use("/api/reviwes", reviwesRouter);
 app.use("/api/orders", orderRouter);
 
-
-
+app.use(express.static("public"));
 app.listen(port, () => {
   console.log(`Server on port ${port}`.yellow.bold);
 });

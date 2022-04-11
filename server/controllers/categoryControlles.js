@@ -8,11 +8,7 @@ const User = require("../models/userModel");
 // @access Public
 const getCategories = asyncHandler(async (req, res) => {
   const categories = await Category.find();
-  res.status(200).json({
-    success: true,
-    count: categories.length,
-    data: categories,
-  });
+  res.status(200).json(categories);
 });
 
 // @desc add category
