@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import NavBar from "./components/NavBar/NavBar";
 import Overview from "./components/Overview"
 import AllForm from "./components/Form/AllForm";
+import ProductsList from "./pages/ProductsList";
 
 import { getUser } from "./features/auth/authSlice";
 import { getBrands } from "./features/brand/brandSlice";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/overview" element={<Overview />} />
+        <Route path="/products" element={<ProductsList />} />
       </Routes>
     </Router>
   );
