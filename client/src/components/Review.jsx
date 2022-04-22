@@ -29,7 +29,7 @@ export default function Review(){
 return (
 <section>
   <div class="max-w-xl mx-4 my-8 sm:mx-6 lg:mx-8 bg-gray-100">
-    <div class="grid grid-cols-1 mt-8 lg:grid-cols-2 gap-x-16 gap-y-12">
+    <div class="grid grid-cols-1 mt-8 gap-x-16 gap-y-12">
 
       <blockquote>
       <span class="text-xl text-gray-900">{review.name}</span><span class="text-lg text-gray-500"> - {review.date}</span>
@@ -48,7 +48,7 @@ return (
                 </div>
           </div>
         <p class="mt-5 text-lg sm:mt-0 text-grey-900">{review.title}</p>
-        <p class="mt-2  text-grey-700">{review.description}</p>
+        <p class="mt-2 text-sm text-grey-700">{review.description}</p>
       </blockquote>
 
     </div>
