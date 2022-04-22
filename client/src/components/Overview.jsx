@@ -1,6 +1,14 @@
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/solid'
 
+
+/*
+Made by: Mohammed Khaled, T#6.
+Expected props:
+- product.name, .price, .href, .images, .description, .highlights, .details
+- reviews.average, .totalCount, .href
+*/
+
 const product = {
   name: 'Basic Tee 6-Pack',
   price: '$192',
@@ -47,15 +55,15 @@ export default function Overview() {
 
 
         {/* Image gallery */}
-        <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-          <div className="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
+        <div className="mt-6 mx-auto sm:px-6 max-w-7xl px-8 grid grid-cols-3 gap-x-8">
+          <div className="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden block">
             <img
               src={product.images[0].src}
               alt={product.images[0].alt}
               className="w-full h-full object-center object-cover"
             />
           </div>
-          <div className="lg:grid lg:grid-cols-1 lg:gap-y-8">
+          <div className="grid grid-cols-1 gap-y-8">
             <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
               <img
                 src={product.images[1].src}
@@ -71,7 +79,7 @@ export default function Overview() {
               />
             </div>
           </div>
-          <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
+          <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden aspect-w-3 aspect-h-4">
             <img
               src={product.images[3].src}
               alt={product.images[3].alt}
@@ -81,13 +89,13 @@ export default function Overview() {
         </div>
 
         {/* Product info */}
-        <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
-          <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+        <div className="mx-auto sm:px-6 max-w-7xl pt-16 pb-24 px-8 grid grid-cols-3 grid-rows-[auto,auto,1fr] gap-x-8">
+          <div className="col-span-2 border-r border-gray-200 pr-8">
             <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
           </div>
 
-          {/* Options */}
-          <div className="mt-4 lg:mt-0 lg:row-span-3">
+          {/* Price */}
+          <div className="mt-4 row-span-3">
             <p className="text-3xl text-gray-900">{product.price}</p>
 
             {/* Reviews */}
@@ -123,7 +131,7 @@ export default function Overview() {
             </form>
           </div>
 
-          <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+          <div className="py-10 pt-6 pb-16 col-start-1 col-span-2 border-r border-gray-200 pr-8">
             {/* Description and details */}
             <div>
               <h3 className="sr-only">Description</h3>
@@ -159,4 +167,3 @@ export default function Overview() {
     </div>
   )
 }
-// Made by: Mohammed Khaled, T#6.

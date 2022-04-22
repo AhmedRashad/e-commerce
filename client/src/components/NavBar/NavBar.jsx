@@ -13,11 +13,18 @@ import { logout, getUser, reset } from "../../features/auth/authSlice";
 import ecommerceLogo from "../../Images/eCommerce Logo.svg"
 
 
+/*
+Made by: Mohammed Khaled, T#6.
+Expected props:
+- product.name, .price, .href, .images, .description, .highlights, .details
+- reviews.average, .totalCount, .href
+*/
+
 const navigation = {
   categories: [
     {
-      id: "women",
-      name: "Women",
+      id: "Computers",
+      name: "Computers",
       featured: [
         {
           name: "New Arrivals",
@@ -54,8 +61,8 @@ const navigation = {
       ],
     },
     {
-      id: "men",
-      name: "Men",
+      id: "Mobiles",
+      name: "Mobiles",
       featured: [
         {
           name: "New Arrivals",
@@ -92,8 +99,8 @@ const navigation = {
       ],
     },
     {
-      id: "children",
-      name: "Children",
+      id: "Accessories",
+      name: "Accessories",
       featured: [
         {
           name: "New Arrivals",
@@ -452,6 +459,3 @@ export default function NavBar() {
     </div>
   );
 }
-
-
-// Made by: Mohammed Khaled, T#6.

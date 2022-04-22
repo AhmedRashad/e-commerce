@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NavBar from "./components/NavBar/NavBar";
 import Overview from "./components/Overview"
+import Review from "./components/Review"
 import AllForm from "./components/Form/AllForm";
 import ProductsList from "./pages/ProductsList";
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/overview" element={<Overview />} />
+        <Route path="/review" element={<Review />} />
         <Route path="/products" element={<ProductsList />} />
       </Routes>
     </Router>
