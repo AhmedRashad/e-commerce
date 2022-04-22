@@ -7,6 +7,8 @@ import Overview from "./components/Overview"
 import Review from "./components/Review"
 import AllForm from "./components/Form/AllForm";
 import ProductsList from "./pages/ProductsList";
+import DashBoard from "./components/DashBoard/dashBoard";
+
 
 import { getUser } from "./features/auth/authSlice";
 import { getBrands } from "./features/brand/brandSlice";
@@ -14,6 +16,7 @@ import { getCategories } from "./features/category/categorySlice";
 import { getProducts } from "./features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -26,15 +29,18 @@ function App() {
 
   return (
     <Router>
-      <Routes>
+        <Routes>
         <Route path="/" element={<AllForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/overview/:id" element={<Overview />} />
         <Route path="/review" element={<Review />} />
         <Route path="/products" element={<ProductsList />} />
+          <Route path="/dashboard" element={<DashBoard/>}/>
       </Routes>
     </Router>
+    
+
   );
 }
 
