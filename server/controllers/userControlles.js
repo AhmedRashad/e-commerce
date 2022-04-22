@@ -74,8 +74,8 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route Get /api/users
 // @access private
 const getMe = asyncHandler(async (req, res) => {
-  const { name, email } = req.user;
-  res.status(200).json({ name, email });
+  const { name, email, admin } = req.user;
+  res.status(200).json({ name, email, admin });
 });
 
 // @desc Logout user
@@ -95,7 +95,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 // @route Put /api/users/:id/admin
 // @access private
 const makeAdmin = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.email);
+  const user = await User.findOne(req.params.email);
   if (!user) {
     res.status(404);
     throw new Error("User not found");

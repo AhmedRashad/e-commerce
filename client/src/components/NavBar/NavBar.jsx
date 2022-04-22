@@ -10,11 +10,21 @@ import {
 } from "@heroicons/react/outline";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, getUser, reset } from "../../features/auth/authSlice";
+import ecommerceLogo from "../../Images/eCommerce Logo.svg"
+
+
+/*
+Made by: Mohammed Khaled, T#6.
+Expected props:
+- product.name, .price, .href, .images, .description, .highlights, .details
+- reviews.average, .totalCount, .href
+*/
+
 const navigation = {
   categories: [
     {
-      id: "women",
-      name: "Women",
+      id: "Computers",
+      name: "Computers",
       featured: [
         {
           name: "New Arrivals",
@@ -51,8 +61,8 @@ const navigation = {
       ],
     },
     {
-      id: "men",
-      name: "Men",
+      id: "Mobiles",
+      name: "Mobiles",
       featured: [
         {
           name: "New Arrivals",
@@ -89,8 +99,8 @@ const navigation = {
       ],
     },
     {
-      id: "children",
-      name: "Children",
+      id: "Accessories",
+      name: "Accessories",
       featured: [
         {
           name: "New Arrivals",
@@ -139,15 +149,15 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(reset());
     navigate("/login");
   };
 
   useEffect(() => {
     dispatch(getUser());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="bg-white">
@@ -186,7 +196,6 @@ export default function NavBar() {
                   className="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400"
                   onClick={() => setOpen(false)}
                 >
-                  <span className="sr-only">Close menu</span>
                   <XIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
@@ -241,9 +250,6 @@ export default function NavBar() {
                               />
                               {item.name}
                             </a>
-                            <p aria-hidden="true" className="mt-1">
-                              Shop now
-                            </p>
                           </div>
                         ))}
                       </div>
@@ -283,20 +289,6 @@ export default function NavBar() {
                   </div>
                 </div>
               )}
-
-              <div className="border-t border-gray-200 py-6 px-4">
-                <a href="#" className="-m-2 p-2 flex items-center">
-                  <img
-                    src="https://tailwindui.com/img/flags/flag-canada.svg"
-                    alt=""
-                    className="w-5 h-auto block flex-shrink-0"
-                  />
-                  <span className="ml-3 block text-base font-medium text-gray-900">
-                    CAD
-                  </span>
-                  <span className="sr-only">, change currency</span>
-                </a>
-              </div>
             </div>
           </Transition.Child>
         </Dialog>
@@ -320,12 +312,12 @@ export default function NavBar() {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
-                  <span className="sr-only">Workflow</span>
+                <a href="/">
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                    alt=""
+                    src={ecommerceLogo}
+                    alt="Matgar"
+                    title="Homepage"
                   />
                 </a>
               </div>
@@ -393,12 +385,6 @@ export default function NavBar() {
                                             />
                                             {item.name}
                                           </a>
-                                          <p
-                                            aria-hidden="true"
-                                            className="mt-1"
-                                          >
-                                            Shop now
-                                          </p>
                                         </div>
                                       ))}
                                     </div>
@@ -443,21 +429,6 @@ export default function NavBar() {
                     </Link>
                   </div>
                 )}
-
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a
-                    href="#"
-                    className="text-gray-700 hover:text-gray-800 flex items-center"
-                  >
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="w-5 h-auto block flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div>
 
                 {/* Search */}
                 <div className="flex lg:ml-6">

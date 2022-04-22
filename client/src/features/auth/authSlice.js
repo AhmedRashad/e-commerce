@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
-//get user from cookie
-
 
 const initialState = {
   user: null,
@@ -106,11 +104,11 @@ export const authSlice = createSlice({
       })
       .addCase(logout.pending, (state) => {
         state.isLoading = true;
+        state.user = null;
+
       })
       .addCase(logout.fulfilled, (state) => {
         state.isLoading = false;
-        state.isSuccess = true;
-        state.user = null;
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
