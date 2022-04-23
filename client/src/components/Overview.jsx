@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/solid";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 /*
 Made by: Mohammed Khaled, T#6.
@@ -18,48 +19,48 @@ function classNames(...classes) {
 export default function Overview() {
   const [product, setProduct] = useState({});
 
+  const params = useParams();
+  const productId = params.id;
+  console.log(productId);
+
   // fetch the product data from the server with the product id from the url
   // and set it to the product state.
   useEffect(() => {
     const getProduct = async () => {
       const res = await axios.get(
-        `http://localhost:5000/api/products/${
-          window.location.pathname.split("/")[2]
-        }`
+        `http://localhost:5000/api/products/${productId}`
       );
       setProduct(res.data);
-      console.log(res.data);
     };
     getProduct();
   }, []);
-
   return (
     <div className="bg-white">
       {/* Image gallery */}
       <div className="mt-6 mx-auto sm:px-6 max-w-7xl px-8 grid grid-cols-3 gap-x-8">
         <div className="aspect-w-3 aspect-h-4 rounded-lg overflow-hidden block">
           <img
-            src={product.image[0]}
+            src={product?.image?.[0]}
             className="w-full h-full object-center object-cover"
           />
         </div>
         <div className="grid grid-cols-1 gap-y-8">
           <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
             <img
-              src={product.image[1]}
+              src={product?.image?.[1]}
               className="w-full h-full object-center object-cover"
             />
           </div>
           <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
             <img
-              src={product.image[1].src}
+              src={product?.image?.[2]}
               className="w-full h-full object-center object-cover"
             />
           </div>
         </div>
         <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden aspect-w-3 aspect-h-4">
           <img
-            src={product.image[0].src}
+            src={product?.image?.[3]}
             className="w-full h-full object-center object-cover"
           />
         </div>
@@ -68,7 +69,6 @@ export default function Overview() {
       {/* product info */}
       <div className="mx-auto sm:px-6 max-w-7xl pt-16 pb-24 px-8 grid grid-cols-3 grid-rows-[auto,auto,1fr] gap-x-8">
         <div className="col-span-2 border-r border-gray-200 pr-8">
-          {console.log(product.image[1])}
           <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
             {product.name}
           </h1>

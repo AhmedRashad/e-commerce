@@ -29,18 +29,16 @@ function App() {
 
   return (
     <Router>
-        <Routes>
+      <Routes>
         <Route path="/" element={<AllForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/overview/:id" element={<Overview />} />
         <Route path="/review" element={<Review />} />
         <Route path="/products" element={<ProductsList />} />
-          <Route path="/dashboard" element={<DashBoard/>}/>
+        <Route path="/dashboard" element={<DashBoard />} />
       </Routes>
     </Router>
-    
-
   );
 }
 

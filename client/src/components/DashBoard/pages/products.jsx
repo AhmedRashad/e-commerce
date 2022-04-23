@@ -1,10 +1,19 @@
 import Product from "../components/product";
 import { AiOutlinePlus, AiOutlineFilter } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ProductForm from "../../Form/Product";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../../features/product/productSlice";
 
 const Products = () => {
   const [filter, setFilter] = useState(false);
   const [popup, setPopup] = useState(false);
+  const { products } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, []);
 
   const handelAdding = (e) => {
     console.log("from if ", popup);
@@ -26,7 +35,7 @@ const Products = () => {
         }
       >
         <div className="relative p-4 rounded-md bg-white">
-          
+          <ProductForm />
         </div>
       </div>
       <h1 className="text-gray-800 font-bold capitalize text-xl text-center">
@@ -75,6 +84,9 @@ const Products = () => {
       </div> */}
 
       {/* <Catagory/> */}
+      {products.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
     </>
   );
 };
