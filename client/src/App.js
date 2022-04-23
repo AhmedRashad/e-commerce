@@ -36,7 +36,11 @@ function App() {
         <Route path="/overview/:id" element={<Overview />} />
         <Route path="/review" element={<Review />} />
         <Route path="/products" element={<ProductsList />} />
+<<<<<<< HEAD
         <Route path="/dashboard" element={<DashBoard />} />
+=======
+        <Route path="/dashboard" element={<DashBoard/>}/>
+>>>>>>> 87f9ed687dd3425a9dbddd36242540b25d79a4cf
       </Routes>
     </Router>
   );

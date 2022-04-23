@@ -16,14 +16,29 @@ const Products = () => {
   }, []);
 
   const handelAdding = (e) => {
-    console.log("from if ", popup);
-    console.log(e.target.id, e.target.id === "popBg", popup);
     if (popup && e.target.id === "popBg") {
       setPopup(false);
     } else {
       setPopup(true);
     }
   };
+
+  // FIXME: make the list match database schema
+  const categories = [
+    {
+      id:1,
+      name:"computers"
+    },
+    {
+      id:2,
+      name:"laptops"
+    },
+    {
+      id:3,
+      name:"accessories"
+    },
+    
+  ]
   return (
     <>
       <div
@@ -38,9 +53,9 @@ const Products = () => {
           <ProductForm />
         </div>
       </div>
-      <h1 className="text-gray-800 font-bold capitalize text-xl text-center">
+      {/* <h1 className="text-gray-800 font-bold capitalize text-xl text-center">
         Products Page
-      </h1>
+      </h1> */}
       <div className="flex flex-row-reverse my-4 gap-4">
         <div
           onClick={handelAdding}
@@ -72,9 +87,20 @@ const Products = () => {
           >
             filter
           </button>
+          
         </div>
-        <div className=""></div>
+        <div className={(filter ? "" : "hidden ") + "duration-200"}>
+                    <div className="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
+                        <p>Category:</p>
+                        {/* TODO: add function to handel filteration process */}
+                        <select aria-label="select" className="focus:text-indigo-600 focus:outline-none bg-transparent ml-1">
+                          { categories.map(cat => <option key={cat.id} class="text-sm text-indigo-800">{cat.name}</option>)
+                          }
+                        </select>
+                    </div>
+                </div>
       </div>
+<<<<<<< HEAD
       {/* <div className={(filter ? "" : "hidden ") + "w-full p-4 duration-200"}>
         <h3>filter by</h3>
         <div className="flex">
@@ -87,6 +113,8 @@ const Products = () => {
       {products.map((product) => (
         <Product key={product.id} product={product} />
       ))}
+=======
+>>>>>>> 87f9ed687dd3425a9dbddd36242540b25d79a4cf
     </>
   );
 };

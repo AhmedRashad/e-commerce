@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { StarIcon } from '@heroicons/react/solid'
+import { HiStar } from 'react-icons/hi'
 
 /*
 Made by: Mohammed Khaled, T#6.
@@ -36,7 +36,7 @@ return (
           <div class="flex">
           <div className="flex items-center m-1">
                   {[0, 1, 2, 3, 4].map((rating) => (
-                    <StarIcon
+                    <HiStar
                       key={rating}
                       className={classNames(
                         review.count > rating ? 'text-yellow-400' : 'text-gray-200',
