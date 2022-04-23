@@ -7,6 +7,8 @@ import Orders from "./pages/orders";
 import DashBoardPage from "./pages/dashBoardPage";
 import { useState } from "react";
 
+import ProductsListCart from "../Cart/productListCart";
+
 const DashBoard = () => {
   const [page,setPage] = useState(<DashBoardPage />);
   const handelContent = (page) => {
@@ -33,11 +35,12 @@ const DashBoard = () => {
   };
   return (
     <div className="h-screen  w-screen flex">
-      <SideBar handelContent={handelContent}/>
+      <ProductsListCart/>
+      {/* <SideBar handelContent={handelContent}/>
       <div className="grow px-4 overflow-scroll">
         <TopBar />
         {page}
-      </div>
+      </div> */}
     </div>
   );
 };

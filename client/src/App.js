@@ -38,7 +38,6 @@ function App() {
         <Route path="/products" element={<ProductsList />} />
           <Route path="/dashboard" element={<DashBoard/>}/>
       </Routes>
-
     </Router>
     
 
