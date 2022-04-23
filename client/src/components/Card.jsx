@@ -12,12 +12,14 @@ import { Link } from "react-router-dom";
 */
 
 const Card = (props) => {
-  console.log(props.product);
   return (
-    <Link to="/">
-      <div class="group shadow rounded overflow-hidden relative ">
+    // link to the product page with the product id.
+    <Link to={`/overview/${props.product._id}`}>
+      <div class="group shadow rounded overflow-hidden relative h-full ">
         <div class="absolute z-0 left-0 top-0 w-full h-full hidden group-hover:block group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-purple-400 group-hover:opacity-25"></div>
-        <img class="block z-0 w-full" src={props.product.image[0]} />
+        <div className="grid place-items-center">
+          <img class="block z-0 w-36 h-48" src={props.product.image[0]} />
+        </div>
         <div class="z-10 flex justify-between p-5">
           <div>
             <h3 class="text-xl font-bold">{props.product.name}</h3>

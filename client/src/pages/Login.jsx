@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
-import { LockClosedIcon } from "@heroicons/react/solid"; // it's NOT used
 import { GrGoogle } from "react-icons/gr";
 import ecommerceLogo from "../Images/eCommerce Logo.svg"
 

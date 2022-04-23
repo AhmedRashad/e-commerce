@@ -17,6 +17,6 @@ router.get("/", getProducts);
 router.get("/:id", getProduct);
 router.post("/", protect, protectAdmin, uploadHelper, addProduct);
 router.put("/:id", protect, protectAdmin, uploadHelper, updateProduct);
-router.delete("/:id", protect, protectAdmin, deleteProduct);
+router.delete("/:id", deleteProduct);
 
 module.exports = router;

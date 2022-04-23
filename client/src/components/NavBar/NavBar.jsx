@@ -3,21 +3,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import {
-  MenuIcon,
-  SearchIcon,
-  ShoppingBagIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+  HiMenu,
+  HiSearch,
+  HiShoppingBag,
+  HiX,
+} from "react-icons/hi";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, getUser, reset } from "../../features/auth/authSlice";
 import ecommerceLogo from "../../Images/eCommerce Logo.svg"
 
 
+/*
+Made by: Mohammed Khaled, T#6.
+Expected props:
+- product.name, .price, .href, .images, .description, .highlights, .details
+- reviews.average, .totalCount, .href
+*/
+
 const navigation = {
   categories: [
     {
-      id: "women",
-      name: "Women",
+      id: "Computers",
+      name: "Computers",
       featured: [
         {
           name: "New Arrivals",
@@ -54,8 +61,8 @@ const navigation = {
       ],
     },
     {
-      id: "men",
-      name: "Men",
+      id: "Mobiles",
+      name: "Mobiles",
       featured: [
         {
           name: "New Arrivals",
@@ -92,8 +99,8 @@ const navigation = {
       ],
     },
     {
-      id: "children",
-      name: "Children",
+      id: "Accessories",
+      name: "Accessories",
       featured: [
         {
           name: "New Arrivals",
@@ -189,7 +196,7 @@ export default function NavBar() {
                   className="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400"
                   onClick={() => setOpen(false)}
                 >
-                  <XIcon className="h-6 w-6" aria-hidden="true" />
+                  <HiX className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
 
@@ -300,7 +307,7 @@ export default function NavBar() {
                 onClick={() => setOpen(true)}
               >
                 <span className="sr-only">Open menu</span>
-                <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                <HiMenu className="h-6 w-6" aria-hidden="true" />
               </button>
 
               {/* Logo */}
@@ -427,14 +434,14 @@ export default function NavBar() {
                 <div className="flex lg:ml-6">
                   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
-                    <SearchIcon className="w-6 h-6" aria-hidden="true" />
+                    <HiSearch className="w-6 h-6" aria-hidden="true" />
                   </a>
                 </div>
 
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
                   <a href="#" className="group -m-2 p-2 flex items-center">
-                    <ShoppingBagIcon
+                    <HiShoppingBag
                       className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
@@ -452,6 +459,3 @@ export default function NavBar() {
     </div>
   );
 }
-
-
-// Made by: Mohammed Khaled, T#6.

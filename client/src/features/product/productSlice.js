@@ -125,19 +125,6 @@ export const productSlice = createSlice({
         state.isError = true;
         state.meesage = action.payload;
       })
-      .addCase(getProduct.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(getProduct.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.product = action.payload;
-      })
-      .addCase(getProduct.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.meesage = action.payload;
-      })
       .addCase(addProduct.pending, (state, action) => {
         state.isLoading = true;
       })

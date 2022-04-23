@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = "/api/products";
+const API_URL = "http://localhost:5000/api/products";
 
 // get products
 const getAllProducts = async () => {
-  const response = await axios.get("http://localhost:5000/api/products");
+  const response = await axios.get(API_URL);
   return response.data;
 };
 

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { register, reset } from "../features/auth/authSlice";
-import { LockClosedIcon } from "@heroicons/react/solid";
 import { GrGoogle } from "react-icons/gr";
 import ecommerceLogo from "../Images/eCommerce Logo.svg"
 
