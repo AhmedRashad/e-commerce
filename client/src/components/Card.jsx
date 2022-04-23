@@ -12,9 +12,9 @@ import { Link } from "react-router-dom";
 */
 
 const Card = (props) => {
-  console.log(props.product);
   return (
-    <Link to="/">
+    // link to the product page with the product id.
+    <Link to={`/overview/${props.product._id}`}>
       <div class="group shadow rounded overflow-hidden relative ">
         <div class="absolute z-0 left-0 top-0 w-full h-full hidden group-hover:block group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-purple-400 group-hover:opacity-25"></div>
         <img class="block z-0 w-full" src={props.product.image[0]} />

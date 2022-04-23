@@ -33,7 +33,7 @@ function App() {
         <Route path="/" element={<AllForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/overview" element={<Overview />} />
+        <Route path="/overview/:id" element={<Overview />} />
         <Route path="/review" element={<Review />} />
         <Route path="/products" element={<ProductsList />} />
           <Route path="/dashboard" element={<DashBoard/>}/>
