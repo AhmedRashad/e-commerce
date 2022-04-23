@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const TopBar = (props) => {
   return (
-    <header className=" w-full py-2  top-0 right-0">
+    <header className=" w-full py-2 px-4 bg-gray-200 opacity-75 sticky top-0 right-0">
       <div className="flex flex-row-reverse gap-2 sm:gap-4 items-center">
         <Link
           className="group flex justify-center items-center gap-2 p-2 bg-transparent border-2 border-transparent md:hover:border-accent border-solid rounded-lg duration-100"

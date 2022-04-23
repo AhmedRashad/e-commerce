@@ -6,7 +6,7 @@ import Products from "./pages/products";
 import Orders from "./pages/orders";
 import DashBoardPage from "./pages/dashBoardPage";
 import { useState } from "react";
-
+import NotFound from "../../pages/404";
 import ProductsListCart from "../Cart/productListCart";
 
 const DashBoard = () => {
@@ -39,9 +39,10 @@ const DashBoard = () => {
       <div className="grow overflow-auto bg-gray-200 px-4  ">
         <TopBar />
         {/* TODO : find solution for exess part of the page */}
-        <div className="py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded bg-white h-full">{page}</div>
+        <div className="py-4 md:py-7 px-4 md:px-6 xl:px-8 rounded bg-white h-full">{page}</div>
       </div>
     </div>
+
   );
 };
 
