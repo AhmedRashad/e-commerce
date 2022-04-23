@@ -6,6 +6,7 @@ import {
   MdPerson,
   MdLocalOffer,
 } from "react-icons/md";
+import {HiCog} from "react-icons/hi"
 
 const SideBar = (props) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -44,6 +45,12 @@ const SideBar = (props) => {
         <NavItem
           icon={<MdLocalOffer size={25} />}
           title="Offers"
+          isOpen={isOpen}
+          handelContent={props.handelContent}
+        />
+        <NavItem
+          icon={<HiCog size={25} />}
+          title="Settings"
           isOpen={isOpen}
           handelContent={props.handelContent}
         />

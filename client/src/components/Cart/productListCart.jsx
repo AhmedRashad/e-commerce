@@ -39,7 +39,7 @@ const ProductListCart = ()=>{
         }
     ]
     return (
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {products.map((product) =>{
                 return <ProductCart key={product.id} product={product}/>;
 
