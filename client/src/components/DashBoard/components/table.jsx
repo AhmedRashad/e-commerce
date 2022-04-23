@@ -1,6 +1,14 @@
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BsPencil ,BsEyeFill} from "react-icons/bs";
 const Table = (props) => {
+    if( !props.items ||  props.items.length == 0){
+        // TODO : need to be responsive.
+        // TODO : add sorting functions.
+        // TODO : add select all 
+        return (<>
+            <h2>NO items to display</h2>
+        </>);
+    }
   return (
     <table className="w-full text-left whitespace-nowrap ">
       <thead>

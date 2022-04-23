@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { StarIcon } from "@heroicons/react/solid";
+import { HiStar } from "react-icons/hi";
 import axios from "axios";
 
 /*
@@ -84,7 +84,7 @@ export default function Overview() {
             <div className="flex items-center">
               <div className="flex items-center">
                 {[0, 1, 2, 3, 4].map((rating) => (
-                  <StarIcon
+                  <HiStar
                     key={rating}
                     className={classNames(
                       reviews.average > rating
