@@ -10,7 +10,7 @@ import { useState } from "react";
 import ProductsListCart from "../Cart/productListCart";
 
 const DashBoard = () => {
-  const [page,setPage] = useState(<DashBoardPage />);
+  const [page, setPage] = useState(<DashBoardPage />);
   const handelContent = (page) => {
     console.log(page);
     switch (page) {
@@ -24,7 +24,7 @@ const DashBoard = () => {
         setPage(<Products />);
         break;
       case "Orders":
-      setPage(<Orders />);
+        setPage(<Orders />);
         break;
       case "DashBoard":
         setPage(<DashBoardPage />);
@@ -34,13 +34,13 @@ const DashBoard = () => {
     }
   };
   return (
-    <div className="h-screen  w-screen flex">
-      <ProductsListCart/>
-      {/* <SideBar handelContent={handelContent}/>
-      <div className="grow px-4 overflow-scroll">
+    <div className="h-screen  w-screen flex  ">
+      <SideBar handelContent={handelContent} />
+      <div className="grow overflow-auto bg-gray-200 px-4  ">
         <TopBar />
-        {page}
-      </div> */}
+        {/* TODO : find solution for exess part of the page */}
+        <div className="py-4 md:py-7 px-4 md:px-8 xl:px-10 rounded bg-white h-full">{page}</div>
+      </div>
     </div>
   );
 };
