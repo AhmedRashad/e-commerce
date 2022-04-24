@@ -100,21 +100,10 @@ const Products = () => {
                     </div>
                 </div>
       </div>
-<<<<<<< HEAD
-      {/* <div className={(filter ? "" : "hidden ") + "w-full p-4 duration-200"}>
-        <h3>filter by</h3>
-        <div className="flex">
-          <button>Category</button>
-          <button>price</button>
-        </div>
-      </div> */}
 
-      {/* <Catagory/> */}
       {products.map((product) => (
         <Product key={product.id} product={product} />
       ))}
-=======
->>>>>>> 87f9ed687dd3425a9dbddd36242540b25d79a4cf
     </>
   );
 };

@@ -1,6 +1,5 @@
-import React from "react";
 
-export default function payment() {
+export default function Payment() {
     return (
         <>
             <div className="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 pb-10 pt-16">
