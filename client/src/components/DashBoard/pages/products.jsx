@@ -89,6 +89,7 @@ const Products = () => {
           </button>
         </div>
         <div className={(filter ? "" : "hidden ") + "duration-200"}>
+<<<<<<< HEAD
           <div className="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
             <p>Category:</p>
             {/* TODO: add function to handel filteration process */}
@@ -105,6 +106,19 @@ const Products = () => {
           </div>
         </div>
       </div>
+=======
+                    <div className="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
+                        <p>Category:</p>
+                        {/* TODO: add function to handel filteration process */}
+                        <select aria-label="select" className="focus:text-indigo-600 focus:outline-none bg-transparent ml-1">
+                          { categories.map(cat => <option key={cat.id} class="text-sm text-indigo-800">{cat.name}</option>)
+                          }
+                        </select>
+                    </div>
+                </div>
+      </div>
+
+>>>>>>> 954c6c06855b647754d03f253f2161051d7e70be
       {products.map((product) => (
         <Product key={product.id} product={product} />
       ))}
