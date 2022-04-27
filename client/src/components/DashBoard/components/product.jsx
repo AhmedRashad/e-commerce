@@ -14,18 +14,16 @@ const Product = (props) => {
   };
 
   return (
-<<<<<<< HEAD
-    <Card>
-      <div className="grid place-items-center">
-        <Pic img={props.product.image[0]} width={24} height={24} />
-=======
     <div className="w-full shadow rounded-lg p-2 m-2 flex">
-        <div className="grid place-items-center">
-        <div className={`inline-block p-2 rounded shadow w-20 h-20 lg:w-28 lg:h-28`}>
-      <img className="block overflow-hidden w-full" src={props.product.image[0]}/>
-    </div>
-      
->>>>>>> 87f9ed687dd3425a9dbddd36242540b25d79a4cf
+      <div className="grid place-items-center">
+        <div
+          className={`inline-block p-2 rounded shadow w-20 h-20 lg:w-28 lg:h-28`}
+        >
+          <img
+            className="block overflow-hidden w-full"
+            src={props.product.image[0]}
+          />
+        </div>
       </div>
       {/* //<Divder /> */}
       <div className="w-[2px] w- mx-4 bg-gray-900"></div>
@@ -45,14 +43,10 @@ const Product = (props) => {
             </div>
             <div>
               <p className="font-bold text-sm md:text-base md:mb-4">price </p>
-<<<<<<< HEAD
               <p className="font-thin">
                 {props.product.price}{" "}
                 <span className="font-bold text-sm md:text-base">$</span>
               </p>
-=======
-              <p className="font-thin">{props.product.price} <span className="font-bold text-sm md:text-base">$</span></p>
->>>>>>> 87f9ed687dd3425a9dbddd36242540b25d79a4cf
             </div>
           </div>
         </div>

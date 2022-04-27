@@ -87,34 +87,27 @@ const Products = () => {
           >
             filter
           </button>
-          
         </div>
         <div className={(filter ? "" : "hidden ") + "duration-200"}>
-                    <div className="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
-                        <p>Category:</p>
-                        {/* TODO: add function to handel filteration process */}
-                        <select aria-label="select" className="focus:text-indigo-600 focus:outline-none bg-transparent ml-1">
-                          { categories.map(cat => <option key={cat.id} class="text-sm text-indigo-800">{cat.name}</option>)
-                          }
-                        </select>
-                    </div>
-                </div>
-      </div>
-<<<<<<< HEAD
-      {/* <div className={(filter ? "" : "hidden ") + "w-full p-4 duration-200"}>
-        <h3>filter by</h3>
-        <div className="flex">
-          <button>Category</button>
-          <button>price</button>
+          <div className="py-3 px-4 flex items-center text-sm font-medium leading-none text-gray-600 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded">
+            <p>Category:</p>
+            {/* TODO: add function to handel filteration process */}
+            <select
+              aria-label="select"
+              className="focus:text-indigo-600 focus:outline-none bg-transparent ml-1"
+            >
+              {categories.map((cat) => (
+                <option key={cat.id} className="text-sm text-indigo-800">
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-      </div> */}
-
-      {/* <Catagory/> */}
+      </div>
       {products.map((product) => (
         <Product key={product.id} product={product} />
       ))}
-=======
->>>>>>> 87f9ed687dd3425a9dbddd36242540b25d79a4cf
     </>
   );
 };
