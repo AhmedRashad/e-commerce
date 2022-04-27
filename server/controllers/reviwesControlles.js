@@ -20,17 +20,16 @@ const getReviwes = asyncHandler(async (req, res) => {
 // @route   POST /api/reviwes
 // @access  private
 const addReviwes = asyncHandler(async (req, res) => {
+  console.log(req);
   const user = await User.findById(req.user.id).select("-password");
   const product = await Product.findById(req.body.product);
+
   const reviwes = await Reviwes.create({
     ...req.body,
     user: user._id,
     product: product._id,
   });
-  res.status(201).json({
-    success: true,
-    data: reviwes,
-  });
+  res.status(201).json(reviwes);
 });
 
 // @desc    Update reviwes

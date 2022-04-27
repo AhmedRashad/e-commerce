@@ -20,16 +20,7 @@ function Product() {
 
   const { categories } = useSelector((state) => state.category);
   const { brands } = useSelector((state) => state.brand);
-  // const onChange = (e) => {
-  //   if (e.target.files) {
-  //     setFormData((prevState) => ({
-  //       ...prevState,
-  //       image: prevState.image.concat(e.target.),
-  //     }));
-  //   } else {
-  //     setFormData({ ...formData, [e.target.name]: e.target.value });
-  //   }
-  // };
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formdata = new FormData(e.currentTarget);
