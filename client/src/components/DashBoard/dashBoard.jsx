@@ -39,15 +39,14 @@ const DashBoard = () => {
     }
   };
   return (
-    // <div className="h-screen  w-screen flex  ">
-    //   <SideBar handelContent={handelContent} />
-    //   <div className="grow overflow-auto bg-gray-200 px-4  ">
-    //     <TopBar handelContent={handelContent}/>
-    //     {/* TODO : find solution for exess part of the page */}
-    //     <div className="py-4 md:py-7 px-4 md:px-6 xl:px-8 rounded bg-white h-full">{page}</div>
-    //   </div>
-    // </div>
-    <HomePage/>
+    <div className="h-screen  w-screen flex  ">
+      <SideBar handelContent={handelContent} />
+      <div className="grow overflow-auto bg-gray-200 px-4  ">
+        <TopBar handelContent={handelContent}/>
+        {/* TODO : find solution for exess part of the page */}
+        <div className="py-4 md:py-7 px-4 md:px-6 xl:px-8 rounded bg-white h-full">{page}</div>
+      </div>
+    </div>
   );
 };
 
