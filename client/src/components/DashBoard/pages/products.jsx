@@ -10,6 +10,7 @@ const Products = () => {
   const [popup, setPopup] = useState(false);
   const { products } = useSelector((state) => state.product);
   const dispatch = useDispatch();
+  console.log(products);
 
   useEffect(() => {
     dispatch(getProducts());

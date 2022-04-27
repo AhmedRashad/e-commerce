@@ -5,6 +5,9 @@ import { getProducts } from "../../../features/product/productSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 const Product = (props) => {
+  // console.log(props.product.category[0].name);
+  console.log(props.product.brand[0].name);
+
   const dispatch = useDispatch();
 
   const deleteProduct = (id) => {
@@ -34,12 +37,12 @@ const Product = (props) => {
             <h3 className="capitalize font-bold text-sm md:text-base md:mb-4">
               {props.product.name}
             </h3>
-            <p className="font-thin">{props.product.category}</p>
+            <p className="font-thin">{props.product.category[0]?.name}</p>
           </div>
           <div className="flex gap-4 md:gap-8">
             <div>
               <p className="font-bold text-sm md:text-base md:mb-4">Brand </p>
-              <p className="font-thin">{props.product.brand}</p>
+              <p className="font-thin">{props.product.brand[0]?.name}</p>
             </div>
             <div>
               <p className="font-bold text-sm md:text-base md:mb-4">price </p>
