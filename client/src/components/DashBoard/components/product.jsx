@@ -16,6 +16,8 @@ const Product = (props) => {
     });
   };
 
+  console.log(props.product)
+
   return (
     <div className="w-full shadow rounded-lg p-2 m-2 flex">
       <div className="grid place-items-center">
