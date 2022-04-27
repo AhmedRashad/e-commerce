@@ -13,24 +13,14 @@ const Product = (props) => {
     });
   };
 
+  console.log(props.product)
+
   return (
     <div className="w-full shadow rounded-lg p-2 m-2 flex">
-<<<<<<< HEAD
-      <div className="grid place-items-center">
-        <div
-          className={`inline-block p-2 rounded shadow w-20 h-20 lg:w-28 lg:h-28`}
-        >
-          <img
-            className="block overflow-hidden w-full"
-            src={props.product.image[0]}
-          />
-        </div>
-=======
         <div className="grid place-items-center">
         <div className={`inline-block p-2 rounded shadow w-20 h-20 lg:w-28 lg:h-28`}>
       <img className="block overflow-hidden w-full" src={props.product.image[0]}/>
     </div>
->>>>>>> 954c6c06855b647754d03f253f2161051d7e70be
       </div>
       {/* //<Divder /> */}
       <div className="w-[2px] w- mx-4 bg-gray-900"></div>
@@ -50,14 +40,7 @@ const Product = (props) => {
             </div>
             <div>
               <p className="font-bold text-sm md:text-base md:mb-4">price </p>
-<<<<<<< HEAD
-              <p className="font-thin">
-                {props.product.price}{" "}
-                <span className="font-bold text-sm md:text-base">$</span>
-              </p>
-=======
               <p className="font-thin">{props.product.price} <span className="font-bold text-sm md:text-base">$</span></p>
->>>>>>> 954c6c06855b647754d03f253f2161051d7e70be
             </div>
           </div>
         </div>
