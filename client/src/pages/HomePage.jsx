@@ -4,51 +4,57 @@ import Header from "../components/header"
 import FeaturesSection from "../components/featuersSection"
 import Footer from "../components/footer"
 import CardList from "../components/cardList"
+import { useSelector } from "react-redux";
 
-const products=[
-  {
-    id:1,
-    name:"Mobile",
-    image:[
-      "/images/image-1649963347264.jpg"
-    ],
-    description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
-  },
-  {
-    id:2,
-    name:"Mobile",
-    image:[
-      "/images/image-1649963347264.jpg"
-    ],
-    description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
-  },
-  {
-    id:3,
-    name:"Mobile",
-    image:[
-      "/images/image-1649963347264.jpg"
-    ],
-    description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
-  },
-  {
-    id:4,
-    name:"Mobile",
-    image:[
-      "/images/image-1649963347264.jpg"
-    ],
-    description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
-  },
-  {
-    id:5,
-    name:"Mobile",
-    image:[
-      "/images/image-1649963347264.jpg"
-    ],
-    description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
-  },
-]
+
+// const products=[
+//   {
+//     id:1,
+//     name:"Mobile",
+//     image:[
+//       "/images/image-1649963347264.jpg"
+//     ],
+//     description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
+//   },
+//   {
+//     id:2,
+//     name:"Mobile",
+//     image:[
+//       "/images/image-1649963347264.jpg"
+//     ],
+//     description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
+//   },
+//   {
+//     id:3,
+//     name:"Mobile",
+//     image:[
+//       "/images/image-1649963347264.jpg"
+//     ],
+//     description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
+//   },
+//   {
+//     id:4,
+//     name:"Mobile",
+//     image:[
+//       "/images/image-1649963347264.jpg"
+//     ],
+//     description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
+//   },
+//   {
+//     id:5,
+//     name:"Mobile",
+//     image:[
+//       "/images/image-1649963347264.jpg"
+//     ],
+//     description: "lorem sdfjlkds jflkfdsa ;ldsajf ldsakjf;ldsjflkds jfkdsjfpoids jfdsk"
+//   },
+// ]
 
 const HomePage = () => {
+  let { products } = useSelector((state) => state.product);
+  //TODO : need to fetched probaly
+  products = products.slice(0,5);
+
   return (
     <>
     <TopStrip offer="Ramadan 50% offer"/>

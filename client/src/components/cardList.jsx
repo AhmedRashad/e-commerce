@@ -1,3 +1,4 @@
+import { Link  } from "react-router-dom";
 const CardList = (props) => {
   return (
     <div className="container px-4">
@@ -8,12 +9,12 @@ const CardList = (props) => {
 
       <div className="grid grid-cols-1   lg:grid-cols-3  gap-4 my-4">
         {props.products.map((product) => (
-          <InnerCard key={product.id} product={product} />
+          <InnerCard key={product._id} product={product} />
         ))}
       </div>
 
       <div className="w-full flex flex-row-reverse pl-8">
-        <a className="hover:text-indigo-500" href="#">See all products</a>
+        <Link className="hover:text-indigo-500" to="/products">See all products</Link>
       </div>
     </div>
   );
@@ -21,6 +22,7 @@ const CardList = (props) => {
 
 const InnerCard = (props) => {
   return (
+      <Link to={"/overview/"+props.product._id}>
     <div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
       <a href="#" className="w-full block h-full">
         <img
@@ -38,6 +40,7 @@ const InnerCard = (props) => {
         </div>
       </a>
     </div>
+    </Link>
   );
 };
 

@@ -10,9 +10,7 @@ const Products = () => {
   const [popup, setPopup] = useState(false);
   const { products } = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  console.log(products);
 
-  console.log(products);
   useEffect(() => {
     dispatch(getProducts());
   }, []);
@@ -48,10 +46,10 @@ const Products = () => {
         onClick={handelAdding}
         className={
           (popup ? "" : "hidden") +
-          " absolute top-0 left-0 flex justify-center items-center w-screen h-screen bg-black opacity-75"
+          " absolute top-0 left-0 flex justify-center items-center w-screen h-screen bg-black bg-opacity-75"
         }
       >
-        <div className="relative p-4 rounded-md bg-white">
+        <div className=" p-4 rounded-md bg-white">
           <ProductForm />
         </div>
       </div>

@@ -17,6 +17,8 @@ import { getProducts } from "./features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import HomePage from "./pages/HomePage";
+import FQA from "./pages/fqa";
+import NotFound from "./pages/404";
 
 
 function App() {
@@ -31,13 +33,15 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route exact path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/overview/:id" element={<Overview />} />
         <Route path="/review" element={<Review />} />
         <Route path="/products" element={<ProductsList />} />
         <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/fqa" element={<FQA />} />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </Router>
   );

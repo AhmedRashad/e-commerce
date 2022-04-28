@@ -2,29 +2,29 @@ import { useState } from "react";
 
 
 function TopStrip(props) {
-  const convertLang=(word,lang)=>{
-    switch (lang){
-        case "En":
-        return word;
-        case "Ar":
-        if(convertLangToAr.has(word)){
-            return convertLangToAr.get(word);
-        }else{
-            return "لا يوجد ترجمة"
-        }
+  // const convertLang=(word,lang)=>{
+  //   switch (lang){
+  //       case "En":
+  //       return word;
+  //       case "Ar":
+  //       if(convertLangToAr.has(word)){
+  //           return convertLangToAr.get(word);
+  //       }else{
+  //           return "لا يوجد ترجمة"
+  //       }
         
-        default:
-            return "this language does not have a sub";       
-    }
-  }
+  //       default:
+  //           return "this language does not have a sub";       
+  //   }
+  // }
   
-  const convertLangToAr = new Map();
-  convertLangToAr.set("Sign in","تسجيل دخول");
-  convertLangToAr.set("Create new Account","انشئ حساب جديد");
-  const [lang, setLang] = useState("En");
+  // const convertLangToAr = new Map();
+  // convertLangToAr.set("Sign in","تسجيل دخول");
+  // convertLangToAr.set("Create new Account","انشئ حساب جديد");
+  // const [lang, setLang] = useState("En");
   return (
     <div className="w-full flex bg-gray-900 text-white p-2 ">
-      <div className="hidden md:block">
+      {/* <div className="hidden md:block">
         <span
           onClick={()=>{setLang("En")}}
           className={
@@ -43,13 +43,11 @@ function TopStrip(props) {
         >
           Ar
         </span>
-      </div>
-      <span className="grow hover:cursor-pointer hover:text-yellow-300">
-        <span className="inline-block w-full text-sm md:text-base md:text-center">
+      </div> */}
+      <span className=" inline-block w-full hover:cursor-pointer hover:text-yellow-300 text-sm md:text-base md:text-center">
           {props.offer}
-        </span>
       </span>
-      <div>
+      {/* <div>
         <button className="pr-2 border-r text-sm">
           <span className="hover:text-yellow-300">
             {convertLang("Sign in", lang)}
@@ -60,7 +58,7 @@ function TopStrip(props) {
             {convertLang("Create new Account", lang)}
           </span>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

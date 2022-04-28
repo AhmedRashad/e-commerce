@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar/NavBar";
 import Review from "./Review";
 import { useDispatch, useSelector } from "react-redux";
 import { addReview } from "../features/reviews/reviewsSlice";
-
+import Footer from "./footer";
 /*
 Made by: Mohammed Khaled, T#6.
 Expected props:
@@ -301,6 +301,7 @@ export default function Overview() {
           </form>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
