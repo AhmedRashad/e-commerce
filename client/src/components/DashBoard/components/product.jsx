@@ -5,8 +5,6 @@ import { getProducts } from "../../../features/product/productSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 const Product = (props) => {
-  // console.log(props.product.category[0].name);
-  console.log(props.product.brand[0].name);
 
   const dispatch = useDispatch();
 
@@ -16,7 +14,6 @@ const Product = (props) => {
     });
   };
 
-  console.log(props.product)
 
   return (
     <div className="w-full shadow rounded-lg p-2 m-2 flex">

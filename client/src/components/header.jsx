@@ -25,11 +25,9 @@ const Header = () => {
                 </span>
               </Link>
               <Link to="/login">
-              <span
-                className="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-indigo-500 text-indigo-500 dark:text-white hover:bg-indigo-500 hover:text-white text-md"
-              >
-                Sign in 
-              </span>
+                <span className="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-indigo-500 text-indigo-500 dark:text-white hover:bg-indigo-500 hover:text-white text-md">
+                  Sign in
+                </span>
               </Link>
             </div>
           </div>
@@ -37,6 +35,7 @@ const Header = () => {
             <img
               className="w-full h-full block"
               src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              alt="decorative "
             />
           </div>
         </div>
