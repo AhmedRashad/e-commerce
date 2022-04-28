@@ -16,6 +16,7 @@ import { getCategories } from "./features/category/categorySlice";
 import { getProducts } from "./features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import HomePage from "./pages/HomePage";
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<NavBar />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/overview/:id" element={<Overview />} />
