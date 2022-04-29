@@ -27,13 +27,13 @@ export default function Overview() {
   const productId = params.id;
 
   const [product, setProduct] = useState({});
-  const { reviews } = useSelector((state) => state.reviews);
   const [reviewForm, setReviewForm] = useState({
     title: "",
     rating: 0,
     body: "",
     product: productId,
   });
+  const [reviewsList, setReviewsList] = useState([]);
 
   const { title, rating, body } = reviewForm;
 
@@ -55,12 +55,22 @@ export default function Overview() {
       );
       setProduct(res.data);
     };
+    const getReviews = async () => {
+      const res = await axios.get(
+        `http://localhost:5000/api/reviwes/product/${productId}`,
+        {
+          withCredentials: true,
+        }
+      );
+      setReviewsList(res.data.data);
+    };
+
+    getReviews();
     getProduct();
   }, []);
   return (
     <div className="overview">
       <NavBar />
-
       <div className="bg-white">
         {/* Image gallery */}
         <div className="mt-6 mx-auto sm:px-6 max-w-7xl px-8 grid grid-cols-3 gap-x-8">
@@ -201,7 +211,7 @@ export default function Overview() {
                     </svg>
                   </div>
                   <span className="ml-1 text-sm text-gray-600">
-                    {reviews.totalCount} reviews
+                    {reviewsList.length} reviews
                   </span>
                 </div>
               </div>
@@ -209,10 +219,10 @@ export default function Overview() {
           </div>
 
           <div className="mt-8 border-t border-gray-200 pt-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {/* {reviews.map((review) => (
+            <div className="flex flex-col">
+              {reviewsList.map((review) => (
                 <Review key={review.id} review={review} />
-              ))} */}
+              ))}
             </div>
           </div>
         </div>
@@ -301,7 +311,7 @@ export default function Overview() {
           </form>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
