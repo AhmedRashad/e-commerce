@@ -20,7 +20,7 @@ const items = [
       "Depends. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, expedita quasi! Beatae rem officia possimus provident aut praesentium corporis vitae accusantium, eveniet pariatur natus vel, ea numquam cumque ipsa aperiam.",
   },
 ];
-const FQA = () => {
+const FAQ = () => {
   return (
     <>
       <NavBar />
@@ -56,4 +56,4 @@ const Question = (props) => {
   );
 };
 
-export default FQA;
+export default FAQ;

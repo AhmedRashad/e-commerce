@@ -23,10 +23,9 @@ const reviews = {
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
-  }
+}
 
 export default function Review(props) {
-  console.log(props.review);
   return (
     <section>
       <div class="max-w-xl mx-4 my-8 sm:mx-6 lg:mx-8 bg-gray-100">

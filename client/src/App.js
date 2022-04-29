@@ -6,6 +6,9 @@ import Overview from "./components/Overview";
 import Review from "./components/Review";
 import ProductsList from "./pages/ProductsList";
 import DashBoard from "./components/DashBoard/dashBoard";
+import OrderHeader from "./components/OrderHeader";
+import OrderItem from "./components/OrderItem";
+import OrderInProgress from "./components/OrderInProgress";
 
 import { getUser } from "./features/auth/authSlice";
 import { getBrands } from "./features/brand/brandSlice";
@@ -14,7 +17,7 @@ import { getProducts } from "./features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import HomePage from "./pages/HomePage";
-import FQA from "./pages/fqa";
+import FAQ from "./pages/faq";
 import NotFound from "./pages/404";
 import Products from "./components/DashBoard/pages/products";
 import Offers from "./components/DashBoard/pages/offers";
@@ -47,7 +50,10 @@ function App() {
           <Route exact path="orders" element={<Orders />} />
           <Route exact path="settings" element={<Settings />} />
         </Route>
-        <Route path="/fqa" element={<FQA />} />
+        <Route path="/orderheader" element={<OrderHeader />} />
+        <Route path="/orderitem" element={<OrderItem />} />
+        <Route path="/orderinprogress" element={<OrderInProgress />} />
+        <Route path="/faq" element={<FAQ />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

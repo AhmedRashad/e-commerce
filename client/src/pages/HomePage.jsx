@@ -82,7 +82,7 @@ export default HomePage;
 //           <span className="w-full h-4 bg-primary" />
 //         </div>
 //       </div>
-//       <div className="grid grid-cols-1 xs:grid-col-2 md grid-cols-3">
+//       <div className="grid xs:grid-col-2 md grid-cols-3">
 //         <Card product={props.product} />
 //       </div>
 //     </div>
@@ -102,7 +102,7 @@ export default HomePage;
 //             <span className="w-full h-4 bg-primary" />
 //           </div>
 //         </div>
-//         <div className="grid grid-cols-1 xs:grid-col-2 md grid-cols-3"></div>
+//         <div className="grid xs:grid-col-2 md grid-cols-3"></div>
 //       </div>
 //     </>
 //   );

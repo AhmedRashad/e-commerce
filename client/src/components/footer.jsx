@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-screen-xl mx-auto px-4">
         <ul className="max-w-screen-md mx-auto text-lg font-light flex flex-wrap justify-between">
           <li className="my-2">
-            <Link to="/fqa"
+            <Link to="/faq"
               className="text-gray-400 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
             >
               FAQ
@@ -18,7 +18,7 @@ const Footer = () => {
               className="text-gray-400 hover:text-indigo-500 dark:text-gray-300 dark:hover:text-white transition-colors duration-200"
               href="#"
             >
-              Face Book
+              Facebook
             </a>
           </li>
           <li className="my-2">
