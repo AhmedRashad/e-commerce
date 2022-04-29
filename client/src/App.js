@@ -21,7 +21,8 @@ import Offers from "./components/DashBoard/pages/offers";
 import Settings from "./components/DashBoard/pages/settings";
 import Orders from "./components/DashBoard/pages/orders";
 import DashBoardPage from "./components/DashBoard/pages/dashBoardPage";
-
+import Categories from "./components/DashBoard/pages/categories";
+import Brands from "./components/DashBoard/pages/brands";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -41,11 +42,13 @@ function App() {
         <Route path="/review" element={<Review />} />
         <Route path="/products" element={<ProductsList />} />
         <Route path="/dashboard" element={<DashBoard />}>
-          <Route exact path="" element={<DashBoardPage/>}/>
-          <Route exact path="products" element={<Products />} />
-          <Route exact path="offers" element={<Offers />} />
-          <Route exact path="orders" element={<Orders />} />
-          <Route exact path="settings" element={<Settings />} />
+          <Route exact path="" element={<DashBoardPage />} />
+          <Route path="products" element={<Products />} />
+          <Route path="offers" element={<Offers />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="categories" element={<Categories />} />
+          <Route path="brands" element={<Brands />} />
         </Route>
         <Route path="/fqa" element={<FQA />} />
         <Route path="*" element={<NotFound />} />

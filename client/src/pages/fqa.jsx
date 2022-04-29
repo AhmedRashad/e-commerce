@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/footer";
+import ConstactUs from "../components/contactus";
 const items = [
   {
     id: 1,
@@ -29,13 +30,14 @@ const FQA = () => {
           <h2 className="mr-8 text-indigo-900 md:text-4xl w-full md:w-1/3 text-3xl font-extrabold leading-9 mb-4">
             Frequently-asked questions
           </h2>
-          <dl class="w-full md:w-2/3">
+          <dl className="w-full md:w-2/3">
             {items.map((item) => (
               <Question key={item.id} item={item} />
             ))}
           </dl>
         </div>
       </div>
+      <ConstactUs />
       <Footer />
     </>
   );
@@ -44,8 +46,8 @@ const FQA = () => {
 const Question = (props) => {
   return (
     <>
-      <dt class="mb-4">
-        <h3 class="text-xl font-semibold text-indigo-700">
+      <dt className="mb-4">
+        <h3 className="text-xl font-semibold text-indigo-700">
           {props.item.question}
         </h3>
       </dt>
