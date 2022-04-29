@@ -1,47 +1,56 @@
+import React from "react"
+import { BsFillCreditCard2BackFill } from "react-icons/bs"
+import { SiMastercard } from "react-icons/si"
+import { RiVisaLine } from "react-icons/ri"
+import { FaPaypal } from "react-icons/fa"
 
 export default function Payment() {
+    // let paypalRadio = document.querySelector('#paypal'),
+    //     paymentInfo = document.querySelector('#paymentInputs');
+    // paypalRadio.addEventListener('click', () => {
+    //     paymentInfo.replaceChild()
+    // });
     return (
         <>
             <div className="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 pb-10 pt-16">
                 <div className="w-full mx-auto rounded-lg bg-white shadow-lg p-5 text-gray-700" style={{maxWidth: '600px'}}>
                     <div className="w-full pt-1 pb-5">
                         <div className="bg-indigo-500 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
-                            <i className="mdi mdi-credit-card-outline text-3xl"></i>
+                            <BsFillCreditCard2BackFill className="mdi mdi-credit-card-outline text-3xl" />
                         </div>
                     </div>
                     <div className="mb-10">
                         <h1 className="text-center font-bold text-xl uppercase">Secure payment info</h1>
                     </div>
-                    <div className="mb-3 flex -mx-2">
-                        <div className="px-2">
-                            <label htmlFor="credit" className="flex items-center cursor-pointer">
-                                <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="credit" checked />
-                                <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" alt="#" className="h-8 ml-3" />
-                            </label>
-                        </div>
-                        <div className="px-2">
-                            <label htmlFor="paypal" className="flex items-center cursor-pointer">
-                                <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="paypal" />
-                                <img src="https://www.sketchappsources.com/resources/source-image/PayPalCard.png" alt="#" className="h-8 ml-3" />
-                            </label>
-                        </div>
-                        
+                    <div className="mb-3 flex items-center">
+                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="paymentMethod" id="mastercard" />
+                        <label htmlFor="mastercard" className="cursor-pointer">
+                            <SiMastercard className="h-6 w-6 ml-2" />
+                        </label>
+                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500 ml-7" name="paymentMethod" id="visa" />
+                        <label htmlFor="visa" className="cursor-pointer">
+                            <RiVisaLine className="h-8 w-8 ml-2" />
+                        </label>
+                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500 ml-7" name="paymentMethod" id="paypal" disabled/>
+                        <label htmlFor="paypal" className="cursor-pointer">
+                            <FaPaypal className="h-6 w-6 opacity-50 ml-2" />
+                        </label>
                     </div>
                     <div className="mb-3">
-                        <label className="font-bold text-sm mb-2 ml-1">Name on card</label>
+                        <label className="font-bold text-sm mb-4 text-gray-500 ml-1">Name on card</label>
                         <div>
                             <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="John Smith" type="text"/>
                         </div>
                     </div>
                     <div className="mb-3">
-                        <label className="font-bold text-sm mb-2 ml-1">Card number</label>
+                        <label className="font-bold text-sm mb-4 text-gray-500 ml-1">Card number</label>
                         <div>
                             <input className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="0000 0000 0000 0000" type="text"/>
                         </div>
                     </div>
                     <div className="mb-3 -mx-2 flex items-end">
                         <div className="px-2 w-1/2">
-                            <label className="font-bold text-sm mb-2 ml-1">Expiration date</label>
+                            <label className="font-bold text-sm mb-4 text-gray-500 ml-1">Expiration date</label>
                             <div>
                                 <select className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
                                     <option value="01">01 - January</option>
@@ -75,7 +84,7 @@ export default function Payment() {
                         </div>
                     </div>
                     <div className="mb-10">
-                        <label className="font-bold text-sm mb-2 ml-1">Security code</label>
+                        <label className="font-bold text-sm mb-4 text-gray-500 ml-1">Security code</label>
                         <div>
                             <input className="w-32 px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="000" type="text"/>
                         </div>
