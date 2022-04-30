@@ -5,11 +5,6 @@ import { RiVisaLine } from "react-icons/ri"
 import { FaPaypal } from "react-icons/fa"
 
 export default function Payment() {
-    // let paypalRadio = document.querySelector('#paypal'),
-    //     paymentInfo = document.querySelector('#paymentInputs');
-    // paypalRadio.addEventListener('click', () => {
-    //     paymentInfo.replaceChild()
-    // });
     return (
         <>
             <div className="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 pb-10 pt-16">
