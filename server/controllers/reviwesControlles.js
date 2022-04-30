@@ -22,15 +22,13 @@ const getReviwes = asyncHandler(async (req, res) => {
 const addReviwes = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id).select("-password");
   const product = await Product.findById(req.body.product);
+
   const reviwes = await Reviwes.create({
     ...req.body,
     user: user._id,
     product: product._id,
   });
-  res.status(201).json({
-    success: true,
-    data: reviwes,
-  });
+  res.status(201).json(reviwes);
 });
 
 // @desc    Update reviwes
@@ -57,15 +55,18 @@ const deleteReviwes = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get Reviwes for a product
+// @desc    Get Reviwes by product with all info about user name insted of id
 // @route   GET /api/reviwes/product/:id
 // @access  private
 const getReviwesForProduct = asyncHandler(async (req, res) => {
-  const reviwes = await Reviwes.find({ product: req.params.id });
+  const reviwes = await Reviwes.find({ product: req.params.id }).populate(
+    "user",
+    "-password"
+  );
   res.status(200).json({
     success: true,
-    count: reviwes.length,
     data: reviwes,
+    count: reviwes.length,
   });
 });
 

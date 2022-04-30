@@ -19,7 +19,7 @@ const TopBar = (props) => {
           <HiOutlineLogout className="w-6 h-6 group-hover:text-accent duration-100" />
         </Link>
 
-        <HiOutlineCog onClick={()=>{props.handelContent("Settings")}} className="w-6 h-6 hover:text-accent duration-100" />
+        <Link to="settings"><HiOutlineCog  className="w-6 h-6 hover:text-accent duration-100" /></Link>
 
         <div className="relative">
           <span className="absolute -top-2 -right-1 h-4 aspect-square rounded-full bg-accent  text-xs text-white font-bold flex justify-center items-center ">

@@ -1,16 +1,30 @@
-import {BiSearch} from "react-icons/bi";
 import NavBar from "../components/NavBar/NavBar";
-const HomePage = ()=>{
-    return(<>
-        <NavBar/>
-        <div className="grid place-items-center">
-        <form className="mt-8 border rounded-lg shadow-inner max-w-sm p-2 ">
-            <div className="flex justify-between items-center">
-                <input className="focus:outline-none" type="text" name="search" placeholder="type here"/>
-                <button type="submit"><BiSearch size={20}/></button>
-            </div>
-        </form>
-        </div>
-    </>);
-}
-export default HomePage; 
+import TopStrip from "../components/topStrip";
+import Header from "../components/header";
+import FeaturesSection from "../components/featuersSection";
+import Footer from "../components/footer";
+import CardList from "../components/cardList";
+import { useSelector } from "react-redux";
+import ContactUs from "../components/contactus";
+
+const HomePage = () => {
+  let { products } = useSelector((state) => state.product);
+  //TODO : need to fetched probaly
+  products = products.slice(0, 5);
+
+  return (
+    <>
+      <TopStrip offer="Ramadan 50% offer" />
+      <NavBar />
+      <Header />
+      <div className=" mx-auto w-[80vw] h-1 bg-indigo-500 dark:bg-white my-4 md:my-8"></div>
+      <CardList products={products} />
+      <div className=" mx-auto w-[80vw] h-1 bg-indigo-500 dark:bg-white my-4 md:my-8"></div>
+      <FeaturesSection />
+      <div className=" mx-auto w-[80vw] h-1 bg-indigo-500 dark:bg-white my-4 md:my-8"></div>
+      <ContactUs />
+      <Footer />
+    </>
+  );
+};
+export default HomePage;

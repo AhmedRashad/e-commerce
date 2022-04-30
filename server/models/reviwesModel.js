@@ -1,7 +1,12 @@
 const mongooose = require("mongoose");
 
 const reviwesSchema = new mongooose.Schema({
-  text: {
+  title: {
+    type: String,
+    required: [true, "A reviwes must have a title"],
+    trim: true,
+  },
+  body: {
     type: String,
     required: [true, "Pleace add a text"],
   },

@@ -5,8 +5,11 @@ import {
   MdDocumentScanner,
   MdPerson,
   MdLocalOffer,
+  MdCategory,
 } from "react-icons/md";
-import {HiCog} from "react-icons/hi"
+import { SiBrandfolder } from "react-icons/si";
+import { HiCog } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const SideBar = (props) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -18,42 +21,63 @@ const SideBar = (props) => {
         </a>
       </div>
       <nav className="flex flex-col items-start gap-2">
-        <NavItem
-          icon={<MdHome size={25} />}
-          title="DashBoard"
-          isOpen={isOpen}
-          handelContent={props.handelContent}
-        />
-        <NavItem
-          icon={<MdProductionQuantityLimits size={25} />}
-          title="Products"
-          isOpen={isOpen}
-          handelContent={props.handelContent}
-        />
-        <NavItem
-          icon={<MdDocumentScanner size={25} />}
-          title="Orders"
-          isOpen={isOpen}
-          handelContent={props.handelContent}
-        />
-        <NavItem
-          icon={<MdPerson size={25} />}
-          title="Custmomers"
-          isOpen={isOpen}
-          handelContent={props.handelContent}
-        />
-        <NavItem
-          icon={<MdLocalOffer size={25} />}
-          title="Offers"
-          isOpen={isOpen}
-          handelContent={props.handelContent}
-        />
-        <NavItem
-          icon={<HiCog size={25} />}
-          title="Settings"
-          isOpen={isOpen}
-          handelContent={props.handelContent}
-        />
+        <Link to="">
+          <NavItem
+            icon={<MdHome size={25} />}
+            title="DashBoard"
+            isOpen={isOpen}
+          />
+        </Link>
+        <Link to="products">
+          <NavItem
+            icon={<MdProductionQuantityLimits size={25} />}
+            title="Products"
+            isOpen={isOpen}
+          />
+        </Link>
+        <Link to="orders">
+          <NavItem
+            icon={<MdDocumentScanner size={25} />}
+            title="Orders"
+            isOpen={isOpen}
+          />
+        </Link>
+        <Link to="">
+          <NavItem
+            icon={<MdPerson size={25} />}
+            title="Custmomers"
+            isOpen={isOpen}
+          />
+        </Link>
+        <Link to="offers">
+          <NavItem
+            icon={<MdLocalOffer size={25} />}
+            title="Offers"
+            isOpen={isOpen}
+          />
+        </Link>
+        <Link to="categories">
+          <NavItem
+            icon={<MdCategory size={25} />}
+            title="Categories"
+            isOpen={isOpen}
+          />
+        </Link>
+        <Link to="brands">
+          <NavItem
+            icon={<SiBrandfolder size={25} />}
+            title="Brands"
+            isOpen={isOpen}
+          />
+        </Link>
+
+        <Link to="settings">
+          <NavItem
+            icon={<HiCog size={25} />}
+            title="Settings"
+            isOpen={isOpen}
+          />
+        </Link>
       </nav>
       <button
         className="hidden md:block"
@@ -70,13 +94,7 @@ const SideBar = (props) => {
 
 const NavItem = (props) => {
   return (
-    <div
-      onClick={() => {
-        console.log("this is ");
-        props.handelContent(props.title);
-      }}
-      className="flex gap-2 items-center justify-center group mb-4 "
-    >
+    <div className="flex gap-2 items-center justify-center group mb-4 ">
       <div className="group-hover:text-pink-500 group-hover:cursor-pointer">
         {" "}
         {props.icon}
