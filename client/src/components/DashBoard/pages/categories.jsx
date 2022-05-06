@@ -1,35 +1,20 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Table from "../components/table";
 import PopUp from "../components/popup";
 import Category from "../../Form/Category";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../../../features/category/categorySlice";
 
 const thead = ["name", "description"];
-const categories = [
-  {
-    id: 1,
-    name: "test Category 1",
-    description: "test description 1",
-  },
-  {
-    id: 2,
-    name: "test Category 2",
-    description: "test description 2",
-  },
-  {
-    id: 3,
-    name: "test Category 3",
-    description: "test description 3",
-  },
-  {
-    id: 4,
-    name: "test Category 4",
-    description: "test description 4",
-  },
-];
 
 const Categories = () => {
+  const {categories} = useSelector((state)=> state.category);
+  const dispatch = useDispatch(); 
   const popUp = useRef();
+  useEffect(()=>{
+    dispatch(getCategories());
+  },[]);
 
   return (
     <>

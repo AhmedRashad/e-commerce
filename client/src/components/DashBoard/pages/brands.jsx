@@ -1,35 +1,21 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Table from "../components/table";
 import PopUp from "../components/popup";
 import Brand from "../../Form/Brand";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { getBrands } from "../../../features/brand/brandSlice";
 
-const thead = ["name", "description"];
-const brands = [
-  {
-    id: 1,
-    name: "test Brand 1",
-    description: "test description 1",
-  },
-  {
-    id: 2,
-    name: "test Brand 2",
-    description: "test description 2",
-  },
-  {
-    id: 3,
-    name: "test Brand 3",
-    description: "test description 3",
-  },
-  {
-    id: 4,
-    name: "test Brand 4",
-    description: "test description 4",
-  },
-];
+const thead = ["name" ];
 
 const Brands = () => {
+  const { brands } =  useSelector((state)=> state.brand);
+  console.log(brands)
   const popUp = useRef();
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getBrands());
+  },[])
 
   return (
     <>
