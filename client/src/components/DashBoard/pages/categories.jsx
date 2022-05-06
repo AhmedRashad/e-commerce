@@ -7,9 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getCategories,
 } from "../../../features/category/categorySlice";
-import axios from "axios";
 import Delete from "../components/delete";
-
+import {BiCategoryAlt} from "react-icons/bi";
 const thead = ["name", "description"];
 
 const Categories = () => {
@@ -33,7 +32,7 @@ const Categories = () => {
       popUp.current.handelPopState();
     }
     if (target === 2){
-      setContent(<Delete name={item.name} />);
+      setContent(<Delete name={item.name} close={popUp.current.close}/>);
       popUp.current.handelPopState();
     }
   };
@@ -46,6 +45,7 @@ const Categories = () => {
       <div className="flex flex-row-reverse my-4 gap-4">
         <div
           onClick={() => {
+            setContent(<Category/>)
             popUp.current.handelPopState();
           }}
           className="group flex items-center justify-center gap-1 p-2 bg-green-600 rounded border border-green-600 hover:border-transparent hover:bg-green-800"
@@ -66,12 +66,21 @@ const Categories = () => {
 const Cat = (props) => {
   
   return (
-    <>
-      <h2 className="text-gray-900 text-xl font-bold mb-4">
-        {props.item.name}
-      </h2>
-      <p>{props.item.description}</p>
-    </>
+    <div className=" p-4 bg-white dark:bg-gray-800 w-64 m-auto">
+    <div className="w-full h-full text-center">
+        <div className="flex h-full flex-col justify-between">
+            <BiCategoryAlt className="mt-4 w-12 h-12 m-auto text-indigo-500" size={40} />
+            <p className="text-gray-800 dark:text-gray-200 text-xl font-bold mt-4">
+                 {props.item.name}
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 text-lg py-2 mb-4 px-6">
+                 {props.item.description} 
+            </p>
+
+        </div>
+    </div>
+</div>
+
   );
 };
 
