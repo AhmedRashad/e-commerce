@@ -3,6 +3,7 @@ import SideBar from "./components/sidebar";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Forbidden from "../../pages/forbidden";
+
 const DashBoard = () => {
   const { user } = useSelector((state) => state.auth);
   if(user){

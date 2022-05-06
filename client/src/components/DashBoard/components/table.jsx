@@ -38,7 +38,7 @@ const Table = (props) => {
               ))}
               <td className="px-4 w-28">
                 <div onClick={()=>{
-                  props.handelAction(0,item._id)}}
+                  props.handelAction(0,item)}}
                 className="group flex items-center justify-center gap-1 p-2 rounded border border-gray-500  hover:border-transparent hover:bg-gray-500">
                   <BsEyeFill className="text-gray-500 group-hover:text-white" />
                   <button className="hidden xs:block text-xs text-gray-500 group-hover:text-white">
@@ -55,7 +55,8 @@ const Table = (props) => {
                 </div>
               </td>
               <td className="px-4 w-24">
-                <div className="group flex items-center justify-center gap-1 p-2 rounded border border-red-500  hover:border-transparent hover:bg-red-500">
+                <div onClick={()=>{
+                  props.handelAction(2,item)}} className="group flex items-center justify-center gap-1 p-2 rounded border border-red-500  hover:border-transparent hover:bg-red-500">
                   <RiDeleteBinLine className="text-red-500 group-hover:text-white" />
                   <button className="hidden xs:block text-xs text-red-500 group-hover:text-white">
                     Delete

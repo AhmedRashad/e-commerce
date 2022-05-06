@@ -6,8 +6,9 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCategories,
-  getCategory,
 } from "../../../features/category/categorySlice";
+import axios from "axios";
+import Delete from "../components/delete";
 
 const thead = ["name", "description"];
 
@@ -20,16 +21,19 @@ const Categories = () => {
     dispatch(getCategories());
   }, []);
 
-  const handelAction = (target, id) => {
+  const handelAction = (target, item) => {
     // this simple mapping
     // 0 ===== > view
     // 1 ===== > update
     // 2 ===== > delete
 
     if (target === 0) {
-      setContent(<Cat id={id} />);
-      console.log(id);
-
+      setContent(<Cat item={item} />);
+      console.log(item);
+      popUp.current.handelPopState();
+    }
+    if (target === 2){
+      setContent(<Delete name={item.name} />);
       popUp.current.handelPopState();
     }
   };
@@ -60,15 +64,13 @@ const Categories = () => {
 };
 
 const Cat = (props) => {
-  const { category } = useSelector((state) => state.category);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
-
+  
   return (
     <>
-      <h2 className="text-gray-900 text-xl font-bold mb-4">{console.log(category)}</h2>
+      <h2 className="text-gray-900 text-xl font-bold mb-4">
+        {props.item.name}
+      </h2>
+      <p>{props.item.description}</p>
     </>
   );
 };
