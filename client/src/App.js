@@ -9,7 +9,6 @@ import DashBoard from "./components/DashBoard/dashBoard";
 import OrderHeader from "./components/OrderHeader";
 import OrderItem from "./components/OrderItem";
 import OrderInProgress from "./components/OrderInProgress";
-
 import { getUser } from "./features/auth/authSlice";
 import { getBrands } from "./features/brand/brandSlice";
 import { getCategories } from "./features/category/categorySlice";

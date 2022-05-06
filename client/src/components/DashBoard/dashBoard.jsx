@@ -1,17 +1,11 @@
 import TopBar from "./components/topbar";
 import SideBar from "./components/sidebar";
-import Custmomers from "./pages/custmomers";
-import Offers from "./pages/offers";
-import Products from "./pages/products";
-import Orders from "./pages/orders";
-import DashBoardPage from "./pages/dashBoardPage";
-import { useState } from "react";
-import Settings from "./pages/settings";
-import ProductsListCart from "../Cart/productListCart";
-import HomePage from "../../pages/HomePage";
-import { Route, BrowserRouter as Router, Routes, Outlet } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Forbidden from "../../pages/forbidden";
 const DashBoard = () => {
+  const { user } = useSelector((state) => state.auth);
+  if(user){
    return (
     <div className="h-screen  w-screen flex  ">
       <SideBar  />
@@ -23,7 +17,12 @@ const DashBoard = () => {
         </div>
       </div>
     </div>
-  );
+  );}
+  else{
+    return(
+      <Forbidden/>
+    );
+  }
 };
 
 export default DashBoard;
