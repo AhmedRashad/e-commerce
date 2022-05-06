@@ -37,7 +37,9 @@ const Table = (props) => {
                 <td className="pl-4 md:pl-8">{item[t]}</td>
               ))}
               <td className="px-4 w-28">
-                <div className="group flex items-center justify-center gap-1 p-2 rounded border border-gray-500  hover:border-transparent hover:bg-gray-500">
+                <div onClick={()=>{
+                  props.handelAction(0,item._id)}}
+                className="group flex items-center justify-center gap-1 p-2 rounded border border-gray-500  hover:border-transparent hover:bg-gray-500">
                   <BsEyeFill className="text-gray-500 group-hover:text-white" />
                   <button className="hidden xs:block text-xs text-gray-500 group-hover:text-white">
                     View

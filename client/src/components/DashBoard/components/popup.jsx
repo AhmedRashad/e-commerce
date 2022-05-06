@@ -12,6 +12,8 @@ const PopUp = React.forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     handelPopState: handelPopUpState,
   }));
+
+  
   return (
     <div
       id="popBg"
