@@ -21,4 +21,4 @@ const Account = ()=>{
     );
 }
 
-export default Account;i
+export default Account;
