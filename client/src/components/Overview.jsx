@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { addReview } from "../features/reviews/reviewsSlice";
 import { addProduct } from "../features/shoppingCartSlice";
 import Footer from "./footer";
+
 /*
 Made by: Mohammed Khaled, T#6.
 Expected props:
