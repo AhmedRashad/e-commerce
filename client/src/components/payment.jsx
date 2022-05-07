@@ -4,6 +4,7 @@ import { SiMastercard } from "react-icons/si"
 import { RiVisaLine } from "react-icons/ri"
 import { FaPaypal } from "react-icons/fa"
 import Forbidden from "../pages/forbidden"
+import { useSelector } from "react-redux"
 
 export default function Payment() {
     const { user } = useSelector((state) => state.auth);
