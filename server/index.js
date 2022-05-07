@@ -22,6 +22,7 @@ const brandRouter = require("./routes/brandRoutes");
 const productRouter = require("./routes/productRoutes");
 const reviwesRouter = require("./routes/reviwesRoutes");
 const orderRouter = require("./routes/orderRoutes");
+const stripeRouter = require("./routes/stripeRoutes");
 
 conectarDB();
 
@@ -37,6 +38,7 @@ app.use("/api/brands", brandRouter);
 app.use("/api/products", productRouter);
 app.use("/api/reviwes", reviwesRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/stripe", stripeRouter);
 
 app.use(express.static("public"));
 app.listen(port, () => {

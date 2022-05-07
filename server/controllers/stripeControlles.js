@@ -1,10 +1,10 @@
-const Order = require("../models/order");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const Order = require("../models/orderModel");
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 const asyncHandler = require("express-async-handler");
 
 const checkoutSession = asyncHandler(async (req, res) => {
   const user = req.user;
-  const { products, shipping } = req.body;
+  const { products } = req.body;
   if (products.length === 0) throw new Error("No products found");
   const order = await Order.create({
     user: user._id,
@@ -22,16 +22,17 @@ const checkoutSession = asyncHandler(async (req, res) => {
         description: product.description,
         amount: product.price * 100,
         currency: "usd",
-        quantity: product.quantity,
+        quantity: 1,
       };
     }),
-    success_url: `${process.env.BASE_URL}success?session_id=${session.id}`,
-    cancel_url: `${process.env.BASE_URL}cancel?session_id=${session.id}`,
+    customer_email: user.email,
+    success_url: `${process.env.BASE_URL}/success?id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${process.env.BASE_URL}/cancel?id={CHECKOUT_SESSION_ID}`,
+    shipping_address_collection: { allowed_countries: ["US"] },
   });
-  res.status(201).json({
-    success: true,
-    data: session,
+  res.status(200).json({
+    sessionId: session.id,
   });
 });
 
-export default checkoutSession;
+module.exports = { checkoutSession };
