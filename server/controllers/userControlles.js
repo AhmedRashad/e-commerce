@@ -60,10 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,
     });
-    console.log(generateToken(user._id), {
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-    });
+
     res.json({
       name: user.name,
       email: user.email,

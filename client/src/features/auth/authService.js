@@ -10,7 +10,9 @@ const register = async (userData) => {
 };
 // login user
 const login = async (userData) => {
-  const response = await axios.post(API_URL + "login", userData);
+  const response = await axios.post(API_URL + "login", userData, {
+    withCredentials: true,
+  });
   return response.data;
 };
 // logout user
@@ -23,9 +25,8 @@ const logout = async () => {
 
 // get user
 const getUser = async () => {
-  const response = await fetch(API_URL + "me", {
-    method: "GET",
-    credentials: "include",
+  const response = await axios.get(API_URL + "me", {
+    withCredentials: true,
   });
   return response.data;
 };
