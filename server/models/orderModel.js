@@ -19,6 +19,7 @@ const orderSchema = new mongooose.Schema({
   status: {
     type: String,
     required: [true, "Pleace add a status"],
+    default: "Pending",
   },
   createdAt: {
     type: Date,
