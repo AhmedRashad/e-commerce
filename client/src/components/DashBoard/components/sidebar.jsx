@@ -20,7 +20,7 @@ const SideBar = (props) => {
           Logo
         </a>
       </div>
-      <nav className="flex flex-col items-start gap-2">
+      <nav className="flex flex-col items-start gap-6">
         <Link to="">
           <NavItem
             icon={<MdHome size={25} />}
@@ -78,6 +78,15 @@ const SideBar = (props) => {
             isOpen={isOpen}
           />
         </Link>
+
+        <Link className="border p-2 rounded-md grid place-items-center" to="/">
+          <NavItem
+            icon={<MdHome size={25} />}
+            title="Back Home"
+            isOpen={isOpen}
+          />
+        </Link>
+
       </nav>
       <button
         className="hidden md:block"
@@ -94,7 +103,7 @@ const SideBar = (props) => {
 
 const NavItem = (props) => {
   return (
-    <div className="flex gap-2 items-center justify-center group mb-4 ">
+    <div className="flex gap-2 items-center justify-center group  ">
       <div className="group-hover:text-pink-500 group-hover:cursor-pointer">
         {" "}
         {props.icon}
