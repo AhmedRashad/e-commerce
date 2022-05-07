@@ -15,7 +15,7 @@ const TopBar = (props) => {
  
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/");
+    navigate("/login");
   };
 
 

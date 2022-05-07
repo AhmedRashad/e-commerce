@@ -22,8 +22,8 @@ function Login() {
     if (isError) {
       console.log(message);
     }
-    if (isSuccess || user) {
-      console.log(isSuccess, user);
+    if (user) {
+      console.log(user);
       navigate("/");
     }
     dispatch(reset());

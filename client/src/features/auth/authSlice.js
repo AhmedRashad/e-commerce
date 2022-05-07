@@ -58,8 +58,6 @@ export const getUser = createAsyncThunk("auth/getUser", async (thunkAPI) => {
     return thunkAPI.rejectWithValue(meesage);
   }
 });
- 
-
 
 export const authSlice = createSlice({
   name: "auth",
@@ -105,15 +103,16 @@ export const authSlice = createSlice({
       .addCase(logout.pending, (state) => {
         state.isLoading = true;
         state.user = null;
-
       })
       .addCase(logout.fulfilled, (state) => {
         state.isLoading = false;
+        state.user = null;
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.meesage = action.payload;
+        console.log(state.user);
       })
       .addCase(getUser.pending, (state) => {
         state.isLoading = true;
