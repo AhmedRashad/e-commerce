@@ -23,7 +23,6 @@ function Login() {
       console.log(message);
     }
     if (user) {
-      console.log(user);
       navigate("/");
     }
     dispatch(reset());
