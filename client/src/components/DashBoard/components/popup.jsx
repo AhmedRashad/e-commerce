@@ -5,13 +5,19 @@ const PopUp = React.forwardRef((props, ref) => {
   const handelPopUpState = (e) => {
     if (popup && e.target.id === "popBg") {
       setPopup(false);
+
     } else {
       setPopup(true);
     }
   };
+
+ 
+  
   useImperativeHandle(ref, () => ({
     handelPopState: handelPopUpState,
   }));
+
+  
   return (
     <div
       id="popBg"

@@ -4,32 +4,26 @@ import { useState, useEffect, useRef } from "react";
 import ProductForm from "../../Form/Product";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../../features/product/productSlice";
+import { getCategories } from "../../../features/category/categorySlice";
 import PopUp from "../components/popup";
 
 const Products = () => {
   const [filter, setFilter] = useState(false);
   const { products } = useSelector((state) => state.product);
+ 
+  const { categories } = useSelector((state) => state.category);
   const dispatch = useDispatch();
   const popUp = useRef();
   useEffect(() => {
     dispatch(getProducts());
+    dispatch(getCategories())
   }, []);
 
-  // FIXME: make the list match database schema
-  const categories = [
-    {
-      id: 1,
-      name: "computers",
-    },
-    {
-      id: 2,
-      name: "laptops",
-    },
-    {
-      id: 3,
-      name: "accessories",
-    },
-  ];
+ const handelFilteration = (products)=>{
+
+ }
+
+
   return (
     <>
       <PopUp ref={popUp} form={<ProductForm />} />
@@ -79,7 +73,7 @@ const Products = () => {
               className="focus:text-indigo-600 focus:outline-none bg-transparent ml-1"
             >
               {categories.map((cat) => (
-                <option key={cat.id} className="text-sm text-indigo-800">
+                <option key={cat._id} className="text-sm text-indigo-800">
                   {cat.name}
                 </option>
               ))}

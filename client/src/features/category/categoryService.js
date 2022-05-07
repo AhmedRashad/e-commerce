@@ -8,6 +8,15 @@ const getCategories = async () => {
   return response.data;
 };
 
+// get category 
+const getCategory = async (id) =>{
+  console.log("from service");
+
+  const response = await axios.get(API_URL + id);
+  console.log(response);
+  return response.data;
+}
+
 // add category
 const addCategory = async (categoryData) => {
   const response = await axios.post(API_URL, categoryData);
@@ -28,6 +37,7 @@ const deleteCategory = async (id) => {
 
 const categoryService = {
   getCategories,
+  getCategory,
   addCategory,
   updateCategory,
   deleteCategory,

@@ -1,20 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import categoryService from "./categoryService";
+import orderService from "./orderService";
 
 const initialState = {
-  categories: [],
+  orders: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
   meesage: "",
 };
 
-// get categories
-export const getCategories = createAsyncThunk(
-  "category/getCategories",
+// get Orders
+export const getOrders = createAsyncThunk(
+  "order/getOrders",
+
   async (thunkAPI) => {
     try {
-      return await categoryService.getCategories();
+      return await orderService.getAllOrders();
     } catch (error) {
       const meesage =
         (error.response &&
@@ -27,67 +28,12 @@ export const getCategories = createAsyncThunk(
   }
 );
 
-// get category
-export const getCategory = createAsyncThunk(
-  "category/getCategory",
-  async (id, thunkAPI) => {
-
-    try {
-      return await categoryService.getCategory(id);
-    } catch (error) {
-      const meesage =
-        (error.response &&
-          error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
-        error.toString();
-      return thunkAPI.rejectWithValue(meesage);
-    }
-  }
-);
-
-// add category
-export const addCategory = createAsyncThunk(
-  "category/addCategory",
-  async (categoryData, thunkAPI) => {
-    try {
-      return await categoryService.addCategory(categoryData);
-    } catch (error) {
-      const meesage =
-        (error.response &&
-          error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
-        error.toString();
-      return thunkAPI.rejectWithValue(meesage);
-    }
-  }
-);
-
-// update category
-export const updateCategory = createAsyncThunk(
-  "category/updateCategory",
-  async (id, categoryData, thunkAPI) => {
-    try {
-      return await categoryService.updateCategory(id, categoryData);
-    } catch (error) {
-      const meesage =
-        (error.response &&
-          error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
-        error.toString();
-      return thunkAPI.rejectWithValue(meesage);
-    }
-  }
-);
-
-// delete category
-export const deleteCategory = createAsyncThunk(
-  "category/deleteCategory",
+// get Order
+export const getOrder = createAsyncThunk(
+  "order/getOrder",
   async (id, thunkAPI) => {
     try {
-      return await categoryService.deleteCategory(id);
+      return await orderService.getOrder(id);
     } catch (error) {
       const meesage =
         (error.response &&
@@ -100,12 +46,65 @@ export const deleteCategory = createAsyncThunk(
   }
 );
 
-// slice
-const categorySlice = createSlice({
-  name: "category",
+// add Order
+export const addOrder = createAsyncThunk(
+  "order/addOrder",
+  async (orderData, thunkAPI) => {
+    try {
+      return await orderService.addOrder(orderData);
+    } catch (error) {
+      const meesage =
+        (error.response &&
+          error.response.data &&
+          error.response.data.meesage) ||
+        error.meesage ||
+        error.toString();
+      return thunkAPI.rejectWithValue(meesage);
+    }
+  }
+);
+
+// update Order
+export const updateOrder = createAsyncThunk(
+  "Order/updateOrder",
+  async (id, orderData, thunkAPI) => {
+    try {
+      return await orderService.updateOrder(id, orderData);
+    } catch (error) {
+      const meesage =
+        (error.response &&
+          error.response.data &&
+          error.response.data.meesage) ||
+        error.meesage ||
+        error.toString();
+      return thunkAPI.rejectWithValue(meesage);
+    }
+  }
+);
+
+// delete Order
+export const deleteOrder = createAsyncThunk(
+  "Order/deleteOrder",
+  async (id, thunkAPI) => {
+    try {
+      return await orderService.deleteOrder(id);
+    } catch (error) {
+      const meesage =
+        (error.response &&
+          error.response.data &&
+          error.response.data.meesage) ||
+        error.meesage ||
+        error.toString();
+      return thunkAPI.rejectWithValue(meesage);
+    }
+  }
+);
+
+export const orderSlice = createSlice({
+  name: "order",
   initialState,
   reducers: {
-    restCategory: (state) => {
+    resetOrder: (state) => {
       state.isError = false;
       state.isSuccess = false;
       state.isLoading = false;
@@ -114,79 +113,66 @@ const categorySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getCategories.pending, (state) => {
+      .addCase(getOrders.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(getCategories.fulfilled, (state, action) => {
+      .addCase(getOrders.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.categories = action.payload;
+        state.orders = action.payload;
       })
-      .addCase(getCategories.rejected, (state, action) => {
+      .addCase(getOrders.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.meesage = action.payload;
       })
-      .addCase(getCategory.pending, (state) => {
+      .addCase(addOrder.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(getCategory.fulfilled, (state, action) => {
+      .addCase(addOrder.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.categories = action.payload;
+        state.meesage = "Order added successfully";
+        state.orders.push(action.payload);
       })
-      .addCase(getCategory.rejected, (state, action) => {
+      .addCase(addOrder.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.meesage = action.payload;
       })
-      .addCase(addCategory.pending, (state) => {
+      .addCase(updateOrder.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(addCategory.fulfilled, (state, action) => {
+      .addCase(updateOrder.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.categories.push(action.payload);
-      })
-      .addCase(addCategory.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
-        state.meesage = action.payload;
-      })
-      .addCase(updateCategory.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(updateCategory.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.categories = state.categories.map((category) =>
-          category._id === action.payload._id ? action.payload : category
+        state.meesage = "Order updated successfully";
+        state.orders = state.Orders.map((order) =>
+          order._id === action.payload._id ? action.payload : order
         );
       })
-      .addCase(updateCategory.rejected, (state, action) => {
+      .addCase(updateOrder.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.meesage = action.payload;
       })
-      .addCase(deleteCategory.pending, (state) => {
+      .addCase(deleteOrder.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(deleteCategory.fulfilled, (state, action) => {
+      .addCase(deleteOrder.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.categories = state.categories.filter(
-          (category) => category._id !== action.payload
+        state.meesage = "Order deleted successfully";
+        state.orders = state.orders.filter(
+          (order) => order._id !== action.payload
         );
       })
-      .addCase(deleteCategory.rejected, (state, action) => {
+      .addCase(deleteOrder.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.meesage = action.payload;
       });
   },
 });
-
-// export
-
-export const { restCategory } = categorySlice.actions;
-export default categorySlice.reducer;
+export const { resetOrder } = orderSlice.actions;
+export default orderSlice.reducer;
