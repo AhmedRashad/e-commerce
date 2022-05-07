@@ -25,6 +25,13 @@ import Orders from "./components/DashBoard/pages/orders";
 import DashBoardPage from "./components/DashBoard/pages/dashBoardPage";
 import Categories from "./components/DashBoard/pages/categories";
 import Brands from "./components/DashBoard/pages/brands";
+import Home from "./components/DashBoard/pages/setPages/home";
+import Account from "./components/DashBoard/pages/setPages/account";
+import About from "./components/DashBoard/pages/setPages/about";
+import Apperance from "./components/DashBoard/pages/setPages/apperance";
+import Payment from "./components/DashBoard/pages/setPages/payment";
+
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -48,7 +55,13 @@ function App() {
           <Route path="products" element={<Products />} />
           <Route path="offers" element={<Offers />} />
           <Route path="orders" element={<Orders />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="settings" element={<Settings />} >
+            <Route path="" element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="apperance" element={<Apperance />} />
+            <Route path="account" element={<Account />} />
+            <Route path="payment" element={<Payment />} />
+          </Route>
           <Route path="categories" element={<Categories />} />
           <Route path="brands" element={<Brands />} />
         </Route>
