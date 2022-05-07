@@ -11,6 +11,14 @@ const getCategories = asyncHandler(async (req, res) => {
   res.status(200).json(categories);
 });
 
+// @desc Get  category by id
+// @route GET /api/category
+// @access Public
+const getCategory = asyncHandler(async (req, res) => {
+  const category = await Category.findById(req.params.id);
+  res.status(200).json(category);
+});
+
 // @desc add category
 // @route POST /api/categories
 // @access Private
@@ -53,6 +61,7 @@ const deleteCategory = asyncHandler(async (req, res) => {
 
 module.exports = {
   getCategories,
+  getCategory,
   addCategory,
   updateCategory,
   deleteCategory,

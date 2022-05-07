@@ -1,19 +1,22 @@
+import { useState } from "react";
+
 const Toast = (props) => {
-    let color , title;
+    const [color,setColor] = useState("black") 
+    let title;
     // simple mapping 
     // 0  === > warning
     // -1 === > Error
     // +1 === > success
-    if(props.type == 0){
-        color = "yellow";
+    if(props.type === 0){
+        setColor("yellow");
         title = "Warning";
     }
-    if(props.type == -1){
-        color = "pink";
+    if(props.type === -1){
+        setColor("pink");
         title = "Error";
     }
-    if(props.type == 1){
-        color = "green";
+    if(props.type === 1){
+       setColor("green");
         title = "Success";
     }
   return (
