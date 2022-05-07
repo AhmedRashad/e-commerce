@@ -30,7 +30,7 @@ import Account from "./components/DashBoard/pages/setPages/account";
 import About from "./components/DashBoard/pages/setPages/about";
 import Apperance from "./components/DashBoard/pages/setPages/apperance";
 import Payment from "./components/DashBoard/pages/setPages/payment";
-
+import ProductListCart from "./components/Cart/productListCart";
 
 function App() {
   const dispatch = useDispatch();
@@ -69,6 +69,7 @@ function App() {
         <Route path="/orderitem" element={<OrderItem />} />
         <Route path="/orderinprogress" element={<OrderInProgress />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/cart" element={<ProductListCart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

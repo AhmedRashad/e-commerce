@@ -1,4 +1,6 @@
 import ProductCart from "./ProductCart";
+import NavBar from "../NavBar/NavBar";
+import Footer from "../footer";
 const ProductListCart = ()=>{
     const products = [
         {
@@ -39,11 +41,15 @@ const ProductListCart = ()=>{
         }
     ]
     return (
-        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="min-h-screen flex flex-col">
+        <NavBar />
+        <div className="grow mt-4 md:mt-8 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
             {products.map((product) =>{
                 return <ProductCart key={product.id} product={product}/>;
 
             })}
+        </div>
+        <Footer/>
         </div>
     );
 }
