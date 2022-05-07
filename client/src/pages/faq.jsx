@@ -25,7 +25,7 @@ const FAQ = () => {
   return (
     <>
       <NavBar />
-      <div className="bg-lightblue pt-20 px-4">
+      <div className="dark:bg-gray-800 bg-lightblue pt-20 px-4">
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row">
           <h2 className="mr-8 text-indigo-900 md:text-4xl w-full md:w-1/3 text-3xl font-extrabold leading-9 mb-4">
             Frequently-asked questions
