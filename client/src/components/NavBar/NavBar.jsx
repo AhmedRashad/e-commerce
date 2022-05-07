@@ -160,7 +160,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white z-50 sticky top-0">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog

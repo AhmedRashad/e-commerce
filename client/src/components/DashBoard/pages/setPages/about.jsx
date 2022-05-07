@@ -14,11 +14,11 @@ const members = [
   {
     name: "Mohammed Khaled",
     title: "Front-end Developer",
-    info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus nostrum ea natus architecto incidunt id corrupti quibusdam",
-    flink: "#",
-    tlink: "#",
-    glink: "#",
-    llink: "#",
+    info: "I'm also a Freelancer. I love long term opportunities and building relationships. Make sure to check my Github/LinkedIn for other projects I'm working on!",
+    flink: "https://www.facebook.com/people/Mohammed-Khaled/100005763781061/",
+    tlink: "https://twitter.com/_MoKhaled_",
+    glink: "https://github.com/MoKhaled112",
+    llink: "https://www.linkedin.com/in/mokhaled112/",
   },
   {
     name: "Youssef Husien",
