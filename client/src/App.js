@@ -1,5 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { getUser } from "./features/auth/authSlice";
+import { getBrands } from "./features/brand/brandSlice";
+import { getCategories } from "./features/category/categorySlice";
+import { getProducts } from "./features/product/productSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Overview from "./components/Overview";
@@ -9,13 +16,7 @@ import DashBoard from "./components/DashBoard/dashBoard";
 import OrderHeader from "./components/OrderHeader";
 import OrderItem from "./components/OrderItem";
 import OrderInProgress from "./components/OrderInProgress";
-
-import { getUser } from "./features/auth/authSlice";
-import { getBrands } from "./features/brand/brandSlice";
-import { getCategories } from "./features/category/categorySlice";
-import { getProducts } from "./features/product/productSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import ProductListCart from "./components/Cart/productListCart";
 import HomePage from "./pages/HomePage";
 import FAQ from "./pages/faq";
 import NotFound from "./pages/404";
@@ -26,6 +27,7 @@ import Orders from "./components/DashBoard/pages/orders";
 import DashBoardPage from "./components/DashBoard/pages/dashBoardPage";
 import Categories from "./components/DashBoard/pages/categories";
 import Brands from "./components/DashBoard/pages/brands";
+import Payment from "./components/payment";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -58,6 +60,8 @@ function App() {
         <Route path="/orderinprogress" element={<OrderInProgress />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/cart" element={<ProductListCart />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </Router>
   );

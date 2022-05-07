@@ -4,8 +4,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import NavBar from "../components/NavBar/NavBar";
 import Review from "./Review";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addReview } from "../features/reviews/reviewsSlice";
+import { addProduct } from "../features/shoppingCartSlice";
 import Footer from "./footer";
 /*
 Made by: Mohammed Khaled, T#6.
@@ -46,6 +47,11 @@ export default function Overview() {
     dispatch(addReview(reviewForm));
   };
 
+  const onAddToCart = (e) => {
+    e.preventDefault();
+    dispatch(addProduct(product));
+  };
+
   // fetch the product data from the server with the product id from the url
   // and set it to the product state.
   useEffect(() => {
@@ -55,6 +61,7 @@ export default function Overview() {
       );
       setProduct(res.data);
     };
+
     const getReviews = async () => {
       const res = await axios.get(
         `http://localhost:5000/api/reviwes/product/${productId}`,
@@ -64,7 +71,6 @@ export default function Overview() {
       );
       setReviewsList(res.data.data);
     };
-
     getReviews();
     getProduct();
   }, []);
@@ -143,7 +149,7 @@ export default function Overview() {
 
             <form className="mt-10">
               <button
-                type="submit"
+                onClick={onAddToCart}
                 className="mt-10 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Add to cart
