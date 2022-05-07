@@ -23,8 +23,8 @@ function ProductsList() {
         ))}
       </div>
       {/* grower */}
-      <div className="grow-[2]"/>
-      <Footer/>
+      <div className="grow-[2]" />
+      <Footer />
     </div>
   );
 }

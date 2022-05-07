@@ -15,14 +15,17 @@ const login = async (userData) => {
 };
 // logout user
 const logout = async () => {
-  const response = await axios.get(API_URL + "logout");
+  const response = await axios.get(API_URL + "logout", {
+    withCredentials: true,
+  });
   return response.data;
 };
 
 // get user
 const getUser = async () => {
-  const response = await axios.get(API_URL + "me", {
-    withCredentials: true,
+  const response = await fetch(API_URL + "me", {
+    method: "GET",
+    credentials: "include",
   });
   return response.data;
 };

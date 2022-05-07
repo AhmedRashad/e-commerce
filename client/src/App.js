@@ -16,16 +16,6 @@ import DashBoard from "./components/DashBoard/dashBoard";
 import OrderHeader from "./components/OrderHeader";
 import OrderItem from "./components/OrderItem";
 import OrderInProgress from "./components/OrderInProgress";
-<<<<<<< HEAD
-import ProductListCart from "./components/Cart/productListCart";
-=======
-import { getUser } from "./features/auth/authSlice";
-import { getBrands } from "./features/brand/brandSlice";
-import { getCategories } from "./features/category/categorySlice";
-import { getProducts } from "./features/product/productSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
->>>>>>> 61f09a2234a425fcd904abb13646596c781bb552
 import HomePage from "./pages/HomePage";
 import FAQ from "./pages/faq";
 import NotFound from "./pages/404";
@@ -36,9 +26,6 @@ import Orders from "./components/DashBoard/pages/orders";
 import DashBoardPage from "./components/DashBoard/pages/dashBoardPage";
 import Categories from "./components/DashBoard/pages/categories";
 import Brands from "./components/DashBoard/pages/brands";
-<<<<<<< HEAD
-import Payment from "./components/payment";
-=======
 import Home from "./components/DashBoard/pages/setPages/home";
 import Account from "./components/DashBoard/pages/setPages/account";
 import About from "./components/DashBoard/pages/setPages/about";
@@ -46,7 +33,6 @@ import Apperance from "./components/DashBoard/pages/setPages/apperance";
 import Payment from "./components/DashBoard/pages/setPages/payment";
 import ProductListCart from "./components/Cart/productListCart";
 
->>>>>>> 61f09a2234a425fcd904abb13646596c781bb552
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
