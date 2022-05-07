@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { addProduct } from "../features/shoppingCartSlice";
+import { useDispatch } from "react-redux";
+
 const CardList = (props) => {
   return (
     <div className="container px-4">
@@ -23,6 +26,10 @@ const CardList = (props) => {
 };
 
 const InnerCard = (props) => {
+  const dispatch = useDispatch();
+  const onAddToCart = (e) => {
+    dispatch(addProduct(props.product));
+  };
   return (
     <>
       <div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
@@ -42,7 +49,7 @@ const InnerCard = (props) => {
           </div>
         </Link>
         <button
-          type="submit"
+          onClick={onAddToCart}
           className="my-4 mx-auto w-[80%] bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           Add to cart
