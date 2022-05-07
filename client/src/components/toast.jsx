@@ -1,15 +1,15 @@
 import { useState } from "react";
 
 const Toast = (props) => {
-    let title;
+    let content;
     // simple mapping 
     // 0  === > warning
     // -1 === > Error
     // +1 === > success
     if(props.type === 0){
-      return (
+      content = (
         <div
-          className={`bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4`}
+          className={`bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4 w-[60%]`}
           role="alert"
         >
           <p className="font-bold">Warring</p>
@@ -18,9 +18,9 @@ const Toast = (props) => {
       );
     }
     if(props.type === -1){
-      return (
+      content = (
         <div
-          className={`bg-red-200 border-red-600 text-red-600 border-l-4 p-4`}
+          className={`bg-red-200 border-red-600 text-red-600 border-l-4 p-4 w-[60%]`}
           role="alert"
         >
           <p className="font-bold">Error</p>
@@ -29,9 +29,9 @@ const Toast = (props) => {
       );
     }
     if(props.type === 1){
-      return (
+      content = (
         <div
-          className={`bg-green-200 border-green-600 text-green-600 border-l-4 p-4`}
+          className={`bg-green-200 border-green-600 text-green-600 border-l-4 p-4 w-[60%]`}
           role="alert"
         >
           <p className="font-bold">Success</p>
@@ -40,7 +40,11 @@ const Toast = (props) => {
       );
     }
     else{
-      return <h1>You didn't give type</h1>
+      return(
+        <div className="w-screen z-10 fixed bottom-4 flex justify-center">
+          {content}
+        </div>
+      );
     }
   
 };

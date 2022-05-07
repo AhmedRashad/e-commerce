@@ -5,12 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
 import { GrGoogle } from "react-icons/gr";
 import ecommerceLogo from "../Images/eCommerce Logo.svg"
+import Toast from "../components/toast";
+import NavBar from "../components/NavBar/NavBar";
+import Footer from "../components/footer";
 
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [toast,setToast] = useState(false);
   const { email, password } = formData;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,7 +24,9 @@ function Login() {
   );
   useEffect(() => {
     if (isError) {
-      console.log(message);
+
+      console.log(meesage);
+
     }
     if (user) {
       navigate("/");
@@ -44,8 +50,9 @@ function Login() {
   };
 
   return (
-    <>
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex flex-col">
+    <NavBar />
+      <div className="grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <Link to="/">
@@ -60,13 +67,7 @@ function Login() {
             </h2>
           </div>
           <form onSubmit={onSubmit} className="mt-8 space-y-6">
-            <div>
-                <button className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <GrGoogle className="mr-4" />
-                  Sign in with google
-                </button>
-              </div>
-            <div className="flex justify-center text-zinc-500 items-center relative after:content-[''] after:w-1/3 after:absolute after:right-0 after:bg-zinc-400 after:h-px before:content-[''] before:w-1/4 before:absolute before:left-0 before:bg-zinc-400 before:h-px">Or continue with</div>
+
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -130,7 +131,8 @@ function Login() {
           </form>
         </div>
       </div>
-    </>
+      <Footer/>
+    </div>
   );
 }
 
