@@ -61,7 +61,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="apperance" element={<Apperance />} />
             <Route path="account" element={<Account />} />
-            <Route path="payment" element={<Payment />} />
+            {/* <Route path="payment" element={<Payment />} /> */}
           </Route>
           <Route path="categories" element={<Categories />} />
           <Route path="brands" element={<Brands />} />
@@ -71,9 +71,10 @@ function App() {
         <Route path="/orderinprogress" element={<OrderInProgress />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/cart" element={<ProductListCart />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/cart" element={<ProductListCart />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="*" element={<NotFound />} />
+
       </Routes>
     </Router>
   );
