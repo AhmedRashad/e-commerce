@@ -55,7 +55,7 @@ const deleteReviwes = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc    Get Reviwes by product with all info about user name insted of id
+// @desc    Get Reviwes by product 
 // @route   GET /api/reviwes/product/:id
 // @access  private
 const getReviwesForProduct = asyncHandler(async (req, res) => {

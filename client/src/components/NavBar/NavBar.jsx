@@ -149,7 +149,8 @@ export default function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
-  
+  const { products } = useSelector((state) => state.shoppingCart);
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/login");
@@ -446,7 +447,7 @@ export default function NavBar() {
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      0
+                      {products.length}
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>
