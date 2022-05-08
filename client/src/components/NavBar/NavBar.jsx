@@ -146,7 +146,7 @@ export default function NavBar() {
   const { carts } = useSelector((state) => state.shoppingCart);
   const { products } = useSelector((state) => state.product);
 
-  const cats = ["laptop", "mobile", "accessories"];
+  const cats = ["laptop", "mobile", "Accessories"];
   const laptop = products.filter(
     (product) => product.category[0].name === "laptop"
   );
