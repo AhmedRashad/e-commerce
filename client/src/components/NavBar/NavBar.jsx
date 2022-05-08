@@ -152,7 +152,7 @@ export default function NavBar() {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { carts } = useSelector((state) => state.shoppingCart);
-
+  const products = [];
   const handleLogout = () => {
     dispatch(logout());
     navigate("/login");

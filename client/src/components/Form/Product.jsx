@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../features/product/productSlice";
 
-function Product() {
+function Product(props) {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -32,6 +32,7 @@ function Product() {
       .then((res) => res.json())
       .then((data) => console.log(data))
       .then(() => dispatch(getProducts()));
+      props.handelClose(false);
   };
 
   return (
