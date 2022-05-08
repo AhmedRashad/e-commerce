@@ -20,6 +20,7 @@ Expected props:
 - reviews.average, .totalCount, .href
 */
 
+
 const navigation = {
   categories: [
     {
@@ -144,13 +145,14 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
+
   const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { products } = useSelector((state) => state.shoppingCart);
-
+  
   const handleLogout = () => {
     dispatch(logout());
     navigate("/login");
