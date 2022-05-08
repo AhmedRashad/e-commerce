@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
 import { GrGoogle } from "react-icons/gr";
 import ecommerceLogo from "../Images/eCommerce Logo.svg"
+import Toast from "../components/toast";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function Login() {
   );
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      console.log(isError);
     }
     if (user) {
       navigate("/");
@@ -42,7 +43,6 @@ function Login() {
     };
     dispatch(login(userData));
   };
-
   return (
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -61,16 +61,21 @@ function Login() {
           </div>
           <form onSubmit={onSubmit} className="mt-8 space-y-6">
             <div>
-                <button className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  <GrGoogle className="mr-4" />
-                  Sign in with google
-                </button>
-              </div>
-            <div className="flex justify-center text-zinc-500 items-center relative after:content-[''] after:w-1/3 after:absolute after:right-0 after:bg-zinc-400 after:h-px before:content-[''] before:w-1/4 before:absolute before:left-0 before:bg-zinc-400 before:h-px">Or continue with</div>
+              <button className="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <GrGoogle className="mr-4" />
+                Sign in with google
+              </button>
+            </div>
+            <div className="flex justify-center text-zinc-500 items-center relative after:content-[''] after:w-1/3 after:absolute after:right-0 after:bg-zinc-400 after:h-px before:content-[''] before:w-1/4 before:absolute before:left-0 before:bg-zinc-400 before:h-px">
+              Or continue with
+            </div>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email" className="block text-zinc-600 text-sm font-bold mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-zinc-600 text-sm font-bold mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -85,7 +90,10 @@ function Login() {
                 />
               </div>
               <div>
-                <label htmlFor="password" className="block text-zinc-600 text-sm font-bold mb-2">
+                <label
+                  htmlFor="password"
+                  className="block text-zinc-600 text-sm font-bold mb-2"
+                >
                   Password
                 </label>
                 <input
@@ -116,7 +124,12 @@ function Login() {
                 </label>
               </div>
               <div className="text-sm">
-                <Link to="#" className="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</Link>
+                <Link
+                  to="#"
+                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                >
+                  Forgot your password?
+                </Link>
               </div>
             </div>
             <div>
@@ -129,6 +142,7 @@ function Login() {
             </div>
           </form>
         </div>
+        {isError && <Toast type={-1} massage={"aaaaaaa"} />}
       </div>
     </>
   );

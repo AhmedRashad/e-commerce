@@ -12,7 +12,7 @@ export default function Ordar_summary(props) {
     return total + product.price;
   }, 0);
   const hendlePayment = async () => {
-    const res = await fetch("http://localhost:5000/api/stripe", {
+    const res = await fetch("/api/stripe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
