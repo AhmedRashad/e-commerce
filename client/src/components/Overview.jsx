@@ -73,11 +73,10 @@ export default function Overview() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         credentials: "include",
       });
-      const data = await res.json();
+      const { data } = await res.json();
       setReviewsList(data);
     };
     getReviews();
@@ -211,7 +210,7 @@ export default function Overview() {
                     </svg>
                   </div>
                   <span className="ml-1 text-sm text-gray-600">
-                    {reviewsList.length} reviews
+                    {reviewsList?.length} reviews
                   </span>
                 </div>
               </div>
