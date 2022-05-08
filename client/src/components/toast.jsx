@@ -1,33 +1,48 @@
 import { useState } from "react";
 
 const Toast = (props) => {
-    const [color,setColor] = useState("black") 
     let title;
     // simple mapping 
     // 0  === > warning
     // -1 === > Error
     // +1 === > success
     if(props.type === 0){
-        setColor("yellow");
-        title = "Warning";
+      return (
+        <div
+          className={`bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4`}
+          role="alert"
+        >
+          <p className="font-bold">Warring</p>
+          <p>{props.massage}</p>
+        </div>
+      );
     }
     if(props.type === -1){
-        setColor("pink");
-        title = "Error";
+      return (
+        <div
+          className={`bg-red-200 border-red-600 text-red-600 border-l-4 p-4`}
+          role="alert"
+        >
+          <p className="font-bold">Error</p>
+          <p>{props.massage}</p>
+        </div>
+      );
     }
     if(props.type === 1){
-       setColor("green");
-        title = "Success";
+      return (
+        <div
+          className={`bg-green-200 border-green-600 text-green-600 border-l-4 p-4`}
+          role="alert"
+        >
+          <p className="font-bold">Success</p>
+          <p>{props.massage}</p>
+        </div>
+      );
     }
-  return (
-    <div
-      className={`bg-${color}-200 border-${color}-600 text-${color}-600 border-l-4 p-4`}
-      role="alert"
-    >
-      <p className="font-bold">{title}</p>
-      <p>{props.massage}</p>
-    </div>
-  );
+    else{
+      return <h1>You didn't give type</h1>
+    }
+  
 };
 
 export default Toast;

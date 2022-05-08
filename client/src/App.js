@@ -30,8 +30,9 @@ import Home from "./components/DashBoard/pages/setPages/home";
 import Account from "./components/DashBoard/pages/setPages/account";
 import About from "./components/DashBoard/pages/setPages/about";
 import Apperance from "./components/DashBoard/pages/setPages/apperance";
-import Payment from "./components/DashBoard/pages/setPages/payment";
+import Payment from "./components/payment";
 import ProductListCart from "./components/Cart/productListCart";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -73,7 +74,8 @@ function App() {
         <Route path="/cart" element={<ProductListCart />} />
         <Route path="/cart" element={<ProductListCart />} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="*" element={<NotFound />} />
+        {/* any routes add after this one will not be reached */}
+        <Route path="*" element={<NotFound />} /> 
 
       </Routes>
     </Router>

@@ -3,8 +3,12 @@ import { BsFillCreditCard2BackFill } from "react-icons/bs"
 import { SiMastercard } from "react-icons/si"
 import { RiVisaLine } from "react-icons/ri"
 import { FaPaypal } from "react-icons/fa"
+import Forbidden from "../pages/forbidden"
+import { useSelector } from "react-redux"
 
 export default function Payment() {
+    const { user } = useSelector((state) => state.auth);
+    if(user){
     return (
         <>
             <div className="min-w-screen min-h-screen bg-gray-200 flex items-center justify-center px-5 pb-10 pt-16">
@@ -26,9 +30,9 @@ export default function Payment() {
                         <label htmlFor="visa" className="cursor-pointer">
                             <RiVisaLine className="h-8 w-8 ml-2" />
                         </label>
-                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500 ml-7" name="paymentMethod" id="paypal" disabled/>
+                        <input type="radio" className="form-radio h-5 w-5 text-indigo-500 ml-7" name="paymentMethod" id="paypal" />
                         <label htmlFor="paypal" className="cursor-pointer">
-                            <FaPaypal className="h-6 w-6 opacity-50 ml-2" />
+                            <FaPaypal className="h-6 w-6  ml-2" />
                         </label>
                     </div>
                     <div className="mb-3">
@@ -90,5 +94,10 @@ export default function Payment() {
                 </div>
             </div>
         </>
-    );
+    );}
+    else{
+        return(
+            <Forbidden/>
+          );
+    }
 }
