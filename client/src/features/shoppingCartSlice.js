@@ -10,16 +10,16 @@ export const shoppingCartSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      state.products.push(action.payload);
+      state.carts.push(action.payload);
     },
     removeProduct: (state, action) => {
       console.log(action.payload);
-      state.products = state.products.filter(
+      state.carts = state.products.filter(
         (product) => product._id !== action.payload._id
       );
     },
     resetShoppingCart: (state) => {
-      state.products = [];
+      state.carts = [];
     },
   },
 });
