@@ -13,8 +13,9 @@ export const shoppingCartSlice = createSlice({
       state.products.push(action.payload);
     },
     removeProduct: (state, action) => {
+      console.log(action.payload);
       state.products = state.products.filter(
-        (product) => product._id !== action.payload
+        (product) => product._id !== action.payload._id
       );
     },
     resetShoppingCart: (state) => {
