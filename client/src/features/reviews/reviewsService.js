@@ -1,11 +1,15 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:5000/api/reviwes/";
+const API_URL = "/api/reviwes/";
 
 // @desc    Get all reviews
 const getReviews = async () => {
-  const res = await axios.get(API_URL);
-  return res.data;
+  const res = await fetch(API_URL, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  });
+  return res.json();
 };
 
 // @desc    Add review
@@ -19,20 +23,32 @@ const addReview = async (reviewData) => {
     body: JSON.stringify(reviewData),
     credentials: "include",
   });
-
-  return res.data;
+  return res.json();
 };
 
 // @desc    Update review
 const updateReview = async (id, reviewData) => {
-  const res = await axios.put(API_URL + id, reviewData);
-  return res.data;
+  const res = await fetch(API_URL + id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(reviewData),
+    credentials: "include",
+  });
+  return res.json();
 };
 
 // @desc    Delete review
 const deleteReview = async (id) => {
-  const res = await axios.delete(API_URL + id);
-  return res.data;
+  const res = await fetch(API_URL + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  });
+  return res.json();
 };
 
 const reviewsService = {

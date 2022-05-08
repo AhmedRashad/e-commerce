@@ -22,24 +22,18 @@ function Login() {
   const { user, isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.auth
   );
-  useEffect(() => {
-    if (isError) {
+  useEffec
 
       console.log(message);
-
-    }
-    if (user) {
-      navigate("/");
-    }
     dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  },[user, isError, isSuccess, message, navigate, dispatch]);
 
-  const onChange = (e) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  function onChange(e) {
+  setFormData((prevState) => ({
+    ...prevState,
+    [e.target.name]: e.target.value,
+  }));
+}
   const onSubmit = (e) => {
     e.preventDefault();
     const userData = {
@@ -48,7 +42,6 @@ function Login() {
     };
     dispatch(login(userData));
   };
-
   return (
     <div className="min-h-screen flex flex-col">
     <NavBar />
@@ -67,11 +60,13 @@ function Login() {
             </h2>
           </div>
           <form onSubmit={onSubmit} className="mt-8 space-y-6">
-
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email" className="block text-zinc-600 text-sm font-bold mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-zinc-600 text-sm font-bold mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -86,7 +81,10 @@ function Login() {
                 />
               </div>
               <div>
-                <label htmlFor="password" className="block text-zinc-600 text-sm font-bold mb-2">
+                <label
+                  htmlFor="password"
+                  className="block text-zinc-600 text-sm font-bold mb-2"
+                >
                   Password
                 </label>
                 <input
@@ -117,7 +115,12 @@ function Login() {
                 </label>
               </div>
               <div className="text-sm">
-                <Link to="#" className="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</Link>
+                <Link
+                  to="#"
+                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                >
+                  Forgot your password?
+                </Link>
               </div>
             </div>
             <div>
@@ -130,6 +133,7 @@ function Login() {
             </div>
           </form>
         </div>
+        {isError && <Toast type={-1} massage={"aaaaaaa"} />}
       </div>
       <Footer/>
     </div>

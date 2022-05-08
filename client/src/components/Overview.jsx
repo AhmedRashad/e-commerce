@@ -57,20 +57,28 @@ export default function Overview() {
   // and set it to the product state.
   useEffect(() => {
     const getProduct = async () => {
-      const res = await axios.get(
-        `http://localhost:5000/api/products/${productId}`
-      );
-      setProduct(res.data);
+      const res = await fetch(`/api/products/${productId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      const data = await res.json();
+      setProduct(data);
     };
 
     const getReviews = async () => {
-      const res = await axios.get(
-        `http://localhost:5000/api/reviwes/product/${productId}`,
-        {
-          withCredentials: true,
-        }
-      );
-      setReviewsList(res.data.data);
+      const res = await fetch(`/api/reviwes/product/${productId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      setReviewsList(data);
     };
     getReviews();
     getProduct();
@@ -167,21 +175,6 @@ export default function Overview() {
                 <p className="text-base text-gray-900">{product.description}</p>
               </div>
             </div>
-
-            {/* <div className="mt-10">
-            <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-
-            <div className="mt-4">
-              <ul role="list" className="pl-4 list-disc text-sm space-y-2">
-                {product.highlights.map((highlight) => (
-                  <li key={highlight} className="text-gray-400">
-                    <span className="text-gray-600">{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div> */}
-
             <div className="mt-10">
               <h2 className="text-sm font-medium text-gray-900">Details</h2>
 

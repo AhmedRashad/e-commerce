@@ -1,35 +1,65 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:5000/api/orders";
+const API_URL = "/api/orders";
 
 // get Orders
 const getAllOrders = async () => {
-  const response = await axios.get(API_URL);
-  return response.data;
+  const response = await fetch(API_URL, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  });
+  return response.json();
 };
 
 // get Order
 const getOrder = async (id) => {
-  const response = await axios.get(API_URL + id);
-  return response.data;
+  const response = await fetch(API_URL + id, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  });
+  return response.json();
 };
 
 // add Order
 const addOrder = async (OrderData) => {
-  const response = await axios.post(API_URL, OrderData);
-  return response.data;
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(OrderData),
+    credentials: "include",
+  });
+  return response.json();
 };
 
 // update Order
 const updateOrder = async (id, OrderData) => {
-  const response = await axios.put(API_URL + id, OrderData);
-  return response.data;
+  const response = await fetch(API_URL + id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(OrderData),
+    credentials: "include",
+  });
+  return response.json();
 };
 
 // delete Order
 const deleteOrder = async (id) => {
-  const response = await axios.delete(API_URL + id);
-  return response.data;
+  const response = await fetch(API_URL + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  });
+  return response.json();
 };
 
 const OrderService = {
