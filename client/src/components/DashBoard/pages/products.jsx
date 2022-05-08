@@ -19,14 +19,14 @@ const Products = () => {
     dispatch(getCategories())
   }, []);
 
- const handelFilteration = (products)=>{
-
+ const handelClose = (state)=>{
+    popUp.current.handelState(state)
  }
 
 
   return (
     <>
-      <PopUp ref={popUp} form={<ProductForm />} />
+      <PopUp ref={popUp} form={<ProductForm handelClose={handelClose}/>} />
       {/* <h1 className="text-gray-800 font-bold capitalize text-xl text-center">
         Products Page
       </h1> */}

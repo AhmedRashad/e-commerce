@@ -10,11 +10,10 @@ const PopUp = React.forwardRef((props, ref) => {
       setPopup(true);
     }
   };
-
- 
   
   useImperativeHandle(ref, () => ({
     handelPopState: handelPopUpState,
+    handelState :setPopup
   }));
 
   
