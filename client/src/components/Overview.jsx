@@ -16,7 +16,6 @@ Expected props:
 - reviews.average, .totalCount, .href
 */
 
-const reviews = { href: "#reviews", average: 4, totalCount: 117 };
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -36,6 +35,10 @@ export default function Overview() {
     product: productId,
   });
   const [reviewsList, setReviewsList] = useState([]);
+
+  const reviewaverage =
+    reviewsList.reduce((acc, curr) => acc + curr.rating, 0) /
+    reviewsList.length;
 
   const { title, rating, body } = reviewForm;
 
@@ -137,7 +140,7 @@ export default function Overview() {
                     <HiStar
                       key={rating}
                       className={classNames(
-                        reviews.average > rating
+                        reviewaverage > rating
                           ? "text-gray-900"
                           : "text-gray-200",
                         "h-5 w-5 flex-shrink-0"
@@ -145,12 +148,12 @@ export default function Overview() {
                     />
                   ))}
                 </div>
-                <p>{reviews.average} out of 5 stars</p>
+                <p>{reviewaverage} out of 5 stars</p>
                 <a
-                  href={reviews.href}
+                  href="#reviews"
                   className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  {reviews.totalCount} reviews
+                  {reviewsList.length} reviews
                 </a>
               </div>
             </div>
@@ -218,7 +221,7 @@ export default function Overview() {
           </div>
 
           <div className="mt-8 border-t border-gray-200 pt-5">
-            <div className="flex flex-col">
+            <div id="reviews" className="flex flex-col">
               {reviewsList.map((review) => (
                 <Review key={review.id} review={review} />
               ))}
