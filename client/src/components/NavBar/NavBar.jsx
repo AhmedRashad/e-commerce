@@ -150,6 +150,28 @@ export default function NavBar() {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const { carts } = useSelector((state) => state.shoppingCart);
+  const { products } = useSelector((state) => state.product);
+
+  const laptop = products.filter(
+    (product) => product.category[0].name === "laptop"
+  );
+
+  const mobile = products.filter(
+    (product) => product.category[0].name === "mobile"
+  );
+  // add rest of the products to the accessories category
+  const accessories = products.filter(
+    (product) => product.category[0].name === "Mouse"
+  );
+
+  accessories.push(
+    ...products.filter((product) => product.category[0].name === "Keyboard")
+  );
+  accessories.push(
+    ...products.filter((product) => product.category[0].name === "Accessories")
+  );
+
+  console.log(accessories);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -447,7 +469,7 @@ export default function NavBar() {
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      {products.length}
+                      {carts.length}
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>
