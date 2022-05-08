@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { addProduct } from "../features/shoppingCartSlice";
 import { useDispatch } from "react-redux";
 
+
 const CardList = (props) => {
   return (
     <div className="container px-4">
