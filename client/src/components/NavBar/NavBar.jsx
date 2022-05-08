@@ -14,125 +14,6 @@ Expected props:
 - reviews.average, .totalCount, .href
 */
 
-// const navigation = {
-//   categories: [
-//     {
-//       id: "Computers",
-//       name: "Computers",
-//       featured: [
-//         {
-//           name: "New Arrivals",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
-//           imageAlt:
-//             "Models sitting back to back, wearing Basic Tee in black and bone.",
-//         },
-//         {
-//           name: "Basic Tees",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//         {
-//           name: "Basic Tees 2",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//         {
-//           name: "Basic Tees 3",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//       ],
-//     },
-//     {
-//       id: "Mobiles",
-//       name: "Mobiles",
-//       featured: [
-//         {
-//           name: "New Arrivals",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
-//           imageAlt:
-//             "Models sitting back to back, wearing Basic Tee in black and bone.",
-//         },
-//         {
-//           name: "Basic Tees",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//         {
-//           name: "Basic Tees 2",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//         {
-//           name: "Basic Tees 3",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//       ],
-//     },
-//     {
-//       id: "Accessories",
-//       name: "Accessories",
-//       featured: [
-//         {
-//           name: "New Arrivals",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
-//           imageAlt:
-//             "Models sitting back to back, wearing Basic Tee in black and bone.",
-//         },
-//         {
-//           name: "Basic Tees",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//         {
-//           name: "Basic Tees 2",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//         {
-//           name: "Basic Tees 3",
-//           href: "#",
-//           imageSrc:
-//             "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-//           imageAlt:
-//             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-//         },
-//       ],
-//     },
-//   ],
-// };
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -247,30 +128,33 @@ export default function NavBar() {
                         {products
                           .filter(
                             (product) => product.category[0].name === category
-                          ).slice(0,3)
+                          )
+                          .slice(0, 3)
                           .map((item) => (
-                            <div
-                              key={item.name}
-                              className="group relative text-sm"
-                            >
-                              <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                <img
-                                  src={item.image[0]}
-                                  alt={item.name}
-                                  className="object-center object-cover"
-                                />
-                              </div>
-                              <a
-                                href={item.href}
-                                className="mt-6 block font-medium text-gray-900"
+                            <Link to={`/overview/${item._id}`}>
+                              <div
+                                key={item.name}
+                                className="group relative text-sm"
                               >
-                                <span
-                                  className="absolute z-10 inset-0"
-                                  aria-hidden="true"
-                                />
-                                {item.name}
-                              </a>
-                            </div>
+                                <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                  <img
+                                    src={item.image[0]}
+                                    alt={item.name}
+                                    className="object-center object-cover"
+                                  />
+                                </div>
+                                <a
+                                  href={item.href}
+                                  className="mt-6 block font-medium text-gray-900"
+                                >
+                                  <span
+                                    className="absolute z-10 inset-0"
+                                    aria-hidden="true"
+                                  />
+                                  {item.name}
+                                </a>
+                              </div>
+                            </Link>
                           ))}
                       </div>
                     </Tab.Panel>
@@ -397,31 +281,32 @@ export default function NavBar() {
                                           (product) =>
                                             product.category[0].name ===
                                             category
-                                        ).slice(0,3)
+                                        )
+                                        .slice(0, 3)
                                         .map((item) => (
-                                          <Link to={`/overview/${item.id}`}>
-                                          <div
-                                            key={item.name}
-                                            className="group relative text-base sm:text-sm"
-                                          >
-                                            <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
-                                              <img
-                                                src={item.image[0]}
-                                                alt={item.name}
-                                                className="object-center object-cover"
-                                              />
-                                            </div>
-                                            <a
-                                              href={item.href}
-                                              className="mt-6 block font-medium text-gray-900"
+                                          <Link to={`/overview/${item._id}`}>
+                                            <div
+                                              key={item.name}
+                                              className="group relative text-base sm:text-sm"
                                             >
-                                              <span
-                                                className="absolute z-10 inset-0"
-                                                aria-hidden="true"
-                                              />
-                                              {item.name}
-                                            </a>
-                                          </div>
+                                              <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75">
+                                                <img
+                                                  src={item.image[0]}
+                                                  alt={item.name}
+                                                  className="object-center object-cover"
+                                                />
+                                              </div>
+                                              <a
+                                                href={item.href}
+                                                className="mt-6 block font-medium text-gray-900"
+                                              >
+                                                <span
+                                                  className="absolute z-10 inset-0"
+                                                  aria-hidden="true"
+                                                />
+                                                {item.name}
+                                              </a>
+                                            </div>
                                           </Link>
                                         ))}
                                     </div>
@@ -431,9 +316,7 @@ export default function NavBar() {
                               </div>
                             </Popover.Panel>
                           </Transition>
-                          
                         </>
-                        
                       )}
                     </Popover>
                   ))}
