@@ -173,7 +173,6 @@ export default function NavBar() {
     ...products.filter((product) => product.category[0].name === "Accessories")
   );
 
-  console.log(accessories);
 
   const handleLogout = () => {
     dispatch(logout());
