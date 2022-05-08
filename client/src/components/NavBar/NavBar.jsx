@@ -2,16 +2,10 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
-import {
-  HiMenu,
-  HiSearch,
-  HiShoppingBag,
-  HiX,
-} from "react-icons/hi";
+import { HiMenu, HiSearch, HiShoppingBag, HiX } from "react-icons/hi";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, getUser, reset } from "../../features/auth/authSlice";
-import ecommerceLogo from "../../Images/eCommerce Logo.svg"
-
+import ecommerceLogo from "../../Images/eCommerce Logo.svg";
 
 /*
 Made by: Mohammed Khaled, T#6.
@@ -19,7 +13,6 @@ Expected props:
 - product.name, .price, .href, .images, .description, .highlights, .details
 - reviews.average, .totalCount, .href
 */
-
 
 const navigation = {
   categories: [
@@ -145,7 +138,6 @@ function classNames(...classes) {
 }
 
 export default function NavBar() {
-
   const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
@@ -173,7 +165,6 @@ export default function NavBar() {
     ...products.filter((product) => product.category[0].name === "Accessories")
   );
 
-  console.log(accessories);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -293,6 +284,12 @@ export default function NavBar() {
                   >
                     Logout
                   </button>
+                  {user.admin ?     
+                  <Link to="/dashboard" className="flow-root">
+                    <button  className="-m-2 p-2 block font-medium text-gray-900">
+                      DashBoard
+                    </button>
+                  </Link>:<></>}
                 </div>
               ) : (
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
@@ -436,7 +433,14 @@ export default function NavBar() {
                       logout
                     </button>
                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                    {user.admin ?     
+                  <Link to="/dashboard" className="flow-root">
+                    <button  className="-m-2 p-2 block font-medium text-gray-900">
+                      DashBoard
+                    </button>
+                  </Link>:<></>}
                   </div>
+                  
                 ) : (
                   <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                     <Link
