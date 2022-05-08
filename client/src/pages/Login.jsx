@@ -25,7 +25,7 @@ function Login() {
   useEffect(() => {
     if (isError) {
 
-      console.log(meesage);
+      console.log(message);
 
     }
     if (user) {
