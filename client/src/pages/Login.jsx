@@ -10,6 +10,7 @@ import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/footer";
 
 function Login() {
+  // يارب تشتغل
   const [formData, setFormData] = useState({
     email: "",
     password: "",
