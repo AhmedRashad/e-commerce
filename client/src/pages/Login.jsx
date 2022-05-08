@@ -22,18 +22,18 @@ function Login() {
   const { user, isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.auth
   );
-  useEffec
+  useEffect(()=>{
 
       console.log(message);
     dispatch(reset());
   },[user, isError, isSuccess, message, navigate, dispatch]);
 
-  function onChange(e) {
-  setFormData((prevState) => ({
-    ...prevState,
-    [e.target.name]: e.target.value,
-  }));
-}
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
   const onSubmit = (e) => {
     e.preventDefault();
     const userData = {
