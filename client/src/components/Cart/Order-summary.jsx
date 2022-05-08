@@ -2,13 +2,12 @@ import React from "react";
 import { BsExclamationCircleFill } from "react-icons/bs"
 import { useSelector, useDispatch } from "react-redux";
 import { useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
 
 export default function Ordar_summary(props) {
   const stripe = useStripe();
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.shoppingCart);
-  const totalPrice = products.reduce((total, product) => {
+  const { carts } = useSelector((state) => state.shoppingCart);
+  const totalPrice = carts.reduce((total, product) => {
     return total + product.price;
   }, 0);
   const hendlePayment = async () => {
@@ -18,7 +17,7 @@ export default function Ordar_summary(props) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        products: products,
+        products: carts,
       }),
       credentials: "include",
     });
