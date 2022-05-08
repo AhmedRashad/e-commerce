@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-const setItems = ["","account", "payment", "apperance", "about"];
+const setItems = ["","account", "apperance", "about"];
 const Settings = () => {
   return (
     <>
