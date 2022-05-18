@@ -6,7 +6,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  meesage: "",
+  message: "",
 };
 
 // get categories
@@ -16,13 +16,13 @@ export const getCategories = createAsyncThunk(
     try {
       return await categoryService.getCategories();
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -31,17 +31,16 @@ export const getCategories = createAsyncThunk(
 export const getCategory = createAsyncThunk(
   "category/getCategory",
   async (id, thunkAPI) => {
-
     try {
       return await categoryService.getCategory(id);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -53,13 +52,13 @@ export const addCategory = createAsyncThunk(
     try {
       return await categoryService.addCategory(categoryData);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -71,13 +70,13 @@ export const updateCategory = createAsyncThunk(
     try {
       return await categoryService.updateCategory(id, categoryData);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -89,13 +88,13 @@ export const deleteCategory = createAsyncThunk(
     try {
       return await categoryService.deleteCategory(id);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -109,7 +108,7 @@ const categorySlice = createSlice({
       state.isError = false;
       state.isSuccess = false;
       state.isLoading = false;
-      state.meesage = "";
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
@@ -125,7 +124,7 @@ const categorySlice = createSlice({
       .addCase(getCategories.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(getCategory.pending, (state) => {
         state.isLoading = true;
@@ -138,7 +137,7 @@ const categorySlice = createSlice({
       .addCase(getCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(addCategory.pending, (state) => {
         state.isLoading = true;
@@ -151,7 +150,7 @@ const categorySlice = createSlice({
       .addCase(addCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(updateCategory.pending, (state) => {
         state.isLoading = true;
@@ -166,7 +165,7 @@ const categorySlice = createSlice({
       .addCase(updateCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(deleteCategory.pending, (state) => {
         state.isLoading = true;
@@ -181,7 +180,7 @@ const categorySlice = createSlice({
       .addCase(deleteCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       });
   },
 });

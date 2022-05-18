@@ -6,7 +6,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  meesage: "",
+  message: "",
 };
 // Get reviews
 export const getReviews = createAsyncThunk(
@@ -15,13 +15,13 @@ export const getReviews = createAsyncThunk(
     try {
       return await reviewsService.getReviews();
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -32,13 +32,13 @@ export const addReview = createAsyncThunk(
     try {
       return await reviewsService.addReview(reviewData);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -49,13 +49,13 @@ export const updateReview = createAsyncThunk(
     try {
       return await reviewsService.updateReview(id, reviewData);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -66,13 +66,13 @@ export const deleteReview = createAsyncThunk(
     try {
       return await reviewsService.deleteReview(id);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -87,7 +87,7 @@ const reviewsSlice = createSlice({
       state.isError = false;
       state.isSuccess = false;
       state.isLoading = false;
-      state.meesage = "";
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
@@ -96,7 +96,7 @@ const reviewsSlice = createSlice({
         state.isLoading = true;
         state.isError = false;
         state.isSuccess = false;
-        state.meesage = "";
+        state.message = "";
       })
       .addCase(getReviews.fulfilled, (state, action) => {
         state.reviews = action.payload;
@@ -106,32 +106,32 @@ const reviewsSlice = createSlice({
       .addCase(getReviews.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(addReview.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
         state.isSuccess = false;
-        state.meesage = "";
+        state.message = "";
       })
       .addCase(addReview.fulfilled, (state, action) => {
         state.reviews.push(action.payload);
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.meesage = "";
+        state.message = "";
       })
       .addCase(addReview.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(updateReview.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
         state.isSuccess = false;
-        state.meesage = "";
+        state.message = "";
       })
       .addCase(updateReview.fulfilled, (state, action) => {
         const index = state.reviews.findIndex(
@@ -141,19 +141,19 @@ const reviewsSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.meesage = "";
+        state.message = "";
       })
       .addCase(updateReview.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(deleteReview.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
         state.isSuccess = false;
-        state.meesage = "";
+        state.message = "";
       })
       .addCase(deleteReview.fulfilled, (state, action) => {
         state.reviews = state.reviews.filter(
@@ -162,13 +162,13 @@ const reviewsSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.meesage = "";
+        state.message = "";
       })
       .addCase(deleteReview.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.isSuccess = false;
-        state.meesage = action.payload;
+        state.message = action.payload;
       });
   },
 });

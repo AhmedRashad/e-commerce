@@ -7,7 +7,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  meesage: "",
+  message: "",
 };
 
 // Get brands
@@ -17,13 +17,13 @@ export const getBrands = createAsyncThunk(
     try {
       return await brandService.getBrands();
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -35,13 +35,13 @@ export const addBrand = createAsyncThunk(
     try {
       return await brandService.addBrand(brandData);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -53,13 +53,13 @@ export const updateBrand = createAsyncThunk(
     try {
       return await brandService.updateBrand(id, brandData);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -71,13 +71,13 @@ export const deleteBrand = createAsyncThunk(
     try {
       return await brandService.deleteBrand(id);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -91,7 +91,7 @@ const brandSlice = createSlice({
       state.isError = false;
       state.isSuccess = false;
       state.isLoading = false;
-      state.meesage = "";
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
@@ -107,7 +107,7 @@ const brandSlice = createSlice({
       .addCase(getBrands.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(addBrand.pending, (state) => {
         state.isLoading = true;
@@ -120,7 +120,7 @@ const brandSlice = createSlice({
       .addCase(addBrand.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(updateBrand.pending, (state) => {
         state.isLoading = true;
@@ -136,7 +136,7 @@ const brandSlice = createSlice({
       .addCase(updateBrand.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(deleteBrand.pending, (state) => {
         state.isLoading = true;
@@ -149,7 +149,7 @@ const brandSlice = createSlice({
       .addCase(deleteBrand.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       });
   },
 });

@@ -5,17 +5,17 @@ const cookieParser = require("cookie-parser");
 const app = express();
 /*This tells the server to use the client 
 folder for all static resources*/
-app.use(express.static('client'));
 
 const cors = require("cors");
-app.use(cors());
+app.use(cors(
+  {
+    origin: "http://localhost:3000",
+    credentials: true,
+  }
+));
 
 require("colors");
 
-//The default endpoint for the webserver
-app.get("/", (req, res) => {
-  res.render("index.html");
-});
 
 const conectarDB = require("./config/db");
 const port = process.env.PORT || 5000;

@@ -11,7 +11,7 @@ function Category() {
   const { name, description } = formData;
   const dispatch = useDispatch();
 
-  const { isSuccess, isLoading, isError, meesage } = useSelector(
+  const { isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.category
   );
   const onSubmit = (e) => {
@@ -25,7 +25,7 @@ function Category() {
 
   useEffect(() => {
     if (isError) {
-      console.log(meesage);
+      console.log(message);
     }
   }, [isError, dispatch]);
 

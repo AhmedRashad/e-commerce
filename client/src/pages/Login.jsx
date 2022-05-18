@@ -15,7 +15,6 @@ function Login() {
     email: "",
     password: "",
   });
-  const [toast,setToast] = useState(false);
   const { email, password } = formData;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -23,11 +22,11 @@ function Login() {
   const { user, isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.auth
   );
-  useEffect(()=>{
-
-      console.log(message);
-    dispatch(reset());
-  },[user, isError, isSuccess, message, navigate, dispatch]);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -45,7 +44,7 @@ function Login() {
   };
   return (
     <div className="min-h-screen flex flex-col">
-    <NavBar />
+      <NavBar />
       <div className="grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -134,9 +133,11 @@ function Login() {
             </div>
           </form>
         </div>
-        {isError && <Toast type={-1} massage={"aaaaaaa"} />}
+        {isError && (
+          <Toast type={-1} massage={"Please check your email or password"} />
+        )}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

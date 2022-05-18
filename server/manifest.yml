@@ -1,0 +1,7 @@
+---
+applications:
+- path: .
+  name: matgar1-e-commerce #change to be unique in IBM Cloud
+  memory: 128M
+  instances: 1
+  random-route: true

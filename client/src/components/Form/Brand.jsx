@@ -13,7 +13,7 @@ function Brand() {
   const { name, description, image } = formData;
   const dispatch = useDispatch();
 
-  const { isSuccess, isLoading, isError, meesage } = useSelector(
+  const { isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.brand
   );
   const onChange = (e) => {

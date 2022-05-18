@@ -6,7 +6,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  meesage: "",
+  message: "good",
 };
 // Reagister uaser
 export const register = createAsyncThunk(
@@ -15,13 +15,13 @@ export const register = createAsyncThunk(
     try {
       return await authService.register(user);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -29,33 +29,39 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   try {
     return await authService.login(user);
   } catch (error) {
-    const meesage =
-      (error.response && error.response.data && error.response.data.meesage) ||
-      error.meesage ||
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
       error.toString();
-    return thunkAPI.rejectWithValue(meesage);
+    console.log("error.response", error.response);
+    console.log("error.response.data", error.response.data);
+    console.log("error.response.data.message", error.response.data.message);
+    console.log("error.message", error.message);
+    console.log("error.toString()", error.toString());
+    console.log(message);
+    return thunkAPI.rejectWithValue(message);
   }
 });
 export const logout = createAsyncThunk("auth/logout", async (thunkAPI) => {
   try {
     return await authService.logout();
   } catch (error) {
-    const meesage =
-      (error.response && error.response.data && error.response.data.meesage) ||
-      error.meesage ||
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
       error.toString();
-    return thunkAPI.rejectWithValue(meesage);
+    return thunkAPI.rejectWithValue(message);
   }
 });
 export const getUser = createAsyncThunk("auth/getUser", async (thunkAPI) => {
   try {
     return await authService.getUser();
   } catch (error) {
-    const meesage =
-      (error.response && error.response.data && error.response.data.meesage) ||
-      error.meesage ||
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
       error.toString();
-    return thunkAPI.rejectWithValue(meesage);
+    return thunkAPI.rejectWithValue(message);
   }
 });
 
@@ -67,7 +73,7 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
-      state.meesage = "";
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
@@ -83,7 +89,7 @@ export const authSlice = createSlice({
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
         state.user = null;
       })
       .addCase(login.pending, (state) => {
@@ -97,7 +103,7 @@ export const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
         state.user = null;
       })
       .addCase(logout.pending, (state) => {
@@ -106,13 +112,12 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.isLoading = false;
-        state.user = null;
+        state.isSuccess = true;
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
-        console.log(state.user);
+        state.message = action.payload;
       })
       .addCase(getUser.pending, (state) => {
         state.isLoading = true;
@@ -124,7 +129,7 @@ export const authSlice = createSlice({
       })
       .addCase(getUser.rejected, (state, action) => {
         state.isLoading = false;
-        state.meesage = action.payload;
+        state.message = action.payload;
         state.user = null;
       });
   },

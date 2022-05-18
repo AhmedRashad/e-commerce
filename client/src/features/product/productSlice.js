@@ -5,7 +5,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
-  meesage: "",
+  message: "",
 };
 
 // get products
@@ -16,13 +16,13 @@ export const getProducts = createAsyncThunk(
     try {
       return await productService.getAllProducts();
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -34,13 +34,13 @@ export const getProduct = createAsyncThunk(
     try {
       return await productService.getProduct(id);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -52,13 +52,13 @@ export const addProduct = createAsyncThunk(
     try {
       return await productService.addProduct(productData);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -70,13 +70,13 @@ export const updateProduct = createAsyncThunk(
     try {
       return await productService.updateProduct(id, productData);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -88,13 +88,13 @@ export const deleteProduct = createAsyncThunk(
     try {
       return await productService.deleteProduct(id);
     } catch (error) {
-      const meesage =
+      const message =
         (error.response &&
           error.response.data &&
-          error.response.data.meesage) ||
-        error.meesage ||
+          error.response.data.message) ||
+        error.message ||
         error.toString();
-      return thunkAPI.rejectWithValue(meesage);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );
@@ -107,7 +107,7 @@ export const productSlice = createSlice({
       state.isError = false;
       state.isSuccess = false;
       state.isLoading = false;
-      state.meesage = "";
+      state.message = "";
     },
   },
   extraReducers: (builder) => {
@@ -123,7 +123,7 @@ export const productSlice = createSlice({
       .addCase(getProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(addProduct.pending, (state, action) => {
         state.isLoading = true;
@@ -131,13 +131,13 @@ export const productSlice = createSlice({
       .addCase(addProduct.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.meesage = "Product added successfully";
+        state.message = "Product added successfully";
         state.products.push(action.payload);
       })
       .addCase(addProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(updateProduct.pending, (state, action) => {
         state.isLoading = true;
@@ -145,7 +145,7 @@ export const productSlice = createSlice({
       .addCase(updateProduct.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.meesage = "Product updated successfully";
+        state.message = "Product updated successfully";
         state.products = state.products.map((product) =>
           product._id === action.payload._id ? action.payload : product
         );
@@ -153,7 +153,7 @@ export const productSlice = createSlice({
       .addCase(updateProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       })
       .addCase(deleteProduct.pending, (state, action) => {
         state.isLoading = true;
@@ -161,7 +161,7 @@ export const productSlice = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.meesage = "Product deleted successfully";
+        state.message = "Product deleted successfully";
         state.products = state.products.filter(
           (product) => product._id !== action.payload
         );
@@ -169,7 +169,7 @@ export const productSlice = createSlice({
       .addCase(deleteProduct.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.meesage = action.payload;
+        state.message = action.payload;
       });
   },
 });

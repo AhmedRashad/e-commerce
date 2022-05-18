@@ -1,47 +1,34 @@
 import axios from "axios";
-
-const API_URL = "/api/users/";
+import { URL } from "../../config";
+const API_URL = URL + "/api/users/";
 
 //register user
 const register = async (userData) => {
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-  });
-
-  return response.json();
+  const response = await axios.post(API_URL + "register", userData);
+  return response.data;
 };
 // login user
 const login = async (userData) => {
-  const response = await fetch(API_URL + "login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userData),
-    credentials: "include",
+  const response = await axios.post(API_URL + "login", userData, {
+    withCredentials: true,
   });
-  return response.json();
+  console.log(response.data);
+  return response.data;
 };
 // logout user
 const logout = async () => {
-  const response = await fetch(API_URL + "logout", {
-    method: "GET",
-    credentials: "include",
+  const response = await axios.get(API_URL + "logout", {
+    withCredentials: true,
   });
-  return response.json();
+  return response.data;
 };
 
 // get user
 const getUser = async () => {
-  const response = await fetch(API_URL + "me", {
-    method: "GET",
-    credentials: "include",
+  const response = await axios.get(API_URL + "me", {
+    withCredentials: true,
   });
-  return response.json();
+  return response.data;
 };
 
 const authService = {
