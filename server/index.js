@@ -1,21 +1,19 @@
 require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 
 const app = express();
-/*This tells the server to use the client 
-folder for all static resources*/
 
 const cors = require("cors");
-app.use(cors(
-  {
+app.use(
+  cors({
     origin: "http://localhost:3000",
     credentials: true,
-  }
-));
+  })
+);
 
 require("colors");
-
 
 const conectarDB = require("./config/db");
 const port = process.env.PORT || 5000;
@@ -44,7 +42,14 @@ app.use("/api/reviwes", reviwesRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/stripe", stripeRouter);
 
-app.use(express.static("public"));
+// deploy to heroku
+
+app.use(express.static(path.join(__dirname + "/public")));
+
+app.get("*", (req, rse) => {
+  rse.sendFile(path.resolve(__dirname + "/client/index.html"));
+});
+
 app.listen(port, () => {
   console.log(`Server on port ${port}`.yellow.bold);
 });
